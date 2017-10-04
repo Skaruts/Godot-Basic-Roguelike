@@ -66,7 +66,7 @@ func rect(x=0, y=0, w=0, h=0):
 # NOT TESTED:
 # - should be able to make intersecting lines and rects
 # -----------------------------------------------------
-func rect(x=0, y=0, w=0, h=0):
+func crect(x=0, y=0, w=0, h=0):
 	if w == 0: w = mw
 	if h == 0: h = mh
 
