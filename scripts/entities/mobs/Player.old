@@ -1,0 +1,53 @@
+# attached Player.tscn
+extends "res://scripts/entities/Mob.gd"
+
+var pre_combat = preload("res://scripts/components/Combat.gd")
+# var pre_inventory = preload("res://scripts/components/PlayerInventory.gd")
+
+func _ready():
+	name = "Player"
+	is_obstacle = true
+	sight_range = 15
+
+	combat = pre_combat.new()
+	combat.hp = 10
+	combat.strength = 5
+	combat.defense = 2
+	add_component("combat", combat)
+
+	if debug:
+		label.set_pos( Vector2(0, -TS/2) )
+
+# attempts to move the player in direction 'dir'
+func move(dx, dy):
+	var mob = dungeon.check_for_mob(pos.x+dx, pos.y+dy)
+	if mob != null:
+		combat.attack(mob)
+	else:
+		if dungeon.can_walk( pos.x+dx, pos.y+dy ):
+			set_position( Vector2(pos.x+dx, pos.y+dy) )
+
+func set_label_text(text):
+	if debug:
+		label.set_text(text)
+
+#func die():
+#	is_obstacle = false
+#	dungeon.add_corpse(name, pos)
+#	dungeon.kill_entity(self, 'mob')
+
+#func take_damage(damage):
+#	# apply damage if possible
+#	if damage > 0:
+#		combat.hp = clamp(combat.hp - damage, 0, combat.hp)
+#		label.set_text(str(combat.hp))
+#		# if hp <= 0:	die()
+
+#func attack(target):
+#	var damage = strength - target.defense
+#	if damage > 0:
+#		# make the target take some damage
+#		print ( name + ' attacks ' + target.name + ' for ' + str(damage) + ' HP.' )
+#		target.take_damage(damage)
+#	else:
+#		print ( name + ' attacks ' + target.name + ' but does no damage.' )

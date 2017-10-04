@@ -1,0 +1,7 @@
+
+
+>>>		build the UI
+
+> 		Make mobs move randomly
+
+> improve the icon (change it)
