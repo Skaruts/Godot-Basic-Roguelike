@@ -12,7 +12,7 @@ All bitmap fonts are WIP and were created by me with Aseprite (with a bit of ver
 
 
 
-### **_Controls_**:
+## **_Currently, the controls are:_**
 |key 				| action|
 |---|---|
 |**Q**				| Quit
@@ -28,7 +28,7 @@ All bitmap fonts are WIP and were created by me with Aseprite (with a bit of ver
 |**6**				| (debug) Toggle room info 
 
 
-### **_Gameplay_**:
+### **_Gameplay:_**
 Move towards an enemy to attack. Enemies attack you if you're standing adjacent to them. They can also attack you diagonally, not at all because I have no clue how to change that, but because it's only fair! :+1:
 
 There's nothing but Orcs and Trolls in the map, for now.
