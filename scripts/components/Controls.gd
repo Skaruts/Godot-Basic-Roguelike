@@ -48,18 +48,6 @@ func handle_keys(delta):
 
 	return took_turn
 
-func move(dx, dy):
-	var parent = get_parent()
-	var mob = parent.dungeon.check_for_mob(parent.pos.x+dx, parent.pos.y+dy)
-	if mob != null:
-		parent.combat.attack(mob)
-		return true
-	else:
-		if parent.dungeon.can_walk( parent.pos.x+dx, parent.pos.y+dy ):
-			parent.set_position( Vector2(parent.pos.x+dx, parent.pos.y+dy) )
-			return true
-	return false
-
 func move_once():
 	var has_moved = false
 	var parent = get_parent()
@@ -111,10 +99,14 @@ func move_repeat(delta):
 
 	# if no cooldown and a key was pressed
 	if key_timer <= 0 and moving:
-		if k_left and not k_right:	has_moved = move(-1,  0)
-		if k_right and not k_left:	has_moved = move( 1,  0)
-		if k_up and not k_down:		has_moved = move( 0, -1)
-		if k_down and not k_up:		has_moved = move( 0,  1)
+		if k_left and not k_right:
+			if move(-1,  0):	has_moved = true
+		if k_right and not k_left:
+			if move( 1,  0):	has_moved = true
+		if k_up and not k_down:
+			if move( 0, -1):	has_moved = true
+		if k_down and not k_up:
+			if move( 0,  1):	has_moved = true
 
 		if has_moved:
 			parent.dungeon.calc_fovmap(parent.pos, parent.sight_range)
@@ -124,3 +116,15 @@ func move_repeat(delta):
 		key_timer -= delta
 
 	return has_moved
+
+func move(dx, dy):
+	var parent = get_parent()
+	var mob = parent.dungeon.check_for_mob(parent.pos.x+dx, parent.pos.y+dy)
+	if mob != null:
+		parent.combat.attack(mob)
+		return true
+	else:
+		if parent.dungeon.can_walk( parent.pos.x+dx, parent.pos.y+dy ):
+			parent.set_position( Vector2(parent.pos.x+dx, parent.pos.y+dy) )
+			return true
+	return false
