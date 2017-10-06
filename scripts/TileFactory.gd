@@ -10,11 +10,8 @@ func _init(w, h):
 	create_charmap()
 
 func create_charmap():
-	for j in range(mh):
-		var inner = []
-		for i in range(mw):
-			inner.append(0)
-		charmap.append(inner)
+	for i in range(mw*mh):
+		charmap.append(0)
 
 func line(x, y, orientation, length=0, erase=false):
 	if length:
@@ -25,13 +22,13 @@ func line(x, y, orientation, length=0, erase=false):
 
 func __lineh(x, y, x2, erase):
 	for i in range(x, x2):
-		if not erase: charmap[y][i] = charcodes.HL
-		else: 		  charmap[y][i] = 0
+		if not erase: charmap[i+y*mw] = charcodes.HL
+		else: 		  charmap[i+y*mw] = 0
 
 func __linev(x, y, y2, erase):
 	for j in range(y, y2):
-		if not erase: charmap[j][x] = charcodes.VL
-		else: 		  charmap[j][x] = 0
+		if not erase: charmap[x+j*mw] = charcodes.VL
+		else: 		  charmap[x+j*mw] = 0
 
 #######################################################
 # draws a rectangle shape to the charmap
@@ -46,16 +43,16 @@ func rect(x=0, y=0, w=0, h=0):
 
 	for j in range(y, y2):
 		for i in range(x, x2):
-			if   i == x    and j == y:		charmap[j][i] = charcodes.TL	# Top Left
-			elif i == x2-1 and j == y:		charmap[j][i] = charcodes.TR	# Top Right
-			elif i == x	   and j == y2-1:	charmap[j][i] = charcodes.BL	# Bottom Left
-			elif i == x2-1 and j == y2-1:	charmap[j][i] = charcodes.BR	# Bottom Right
+			if   i == x    and j == y:		charmap[i+j*mw] = charcodes.TL	# Top Left
+			elif i == x2-1 and j == y:		charmap[i+j*mw] = charcodes.TR	# Top Right
+			elif i == x	   and j == y2-1:	charmap[i+j*mw] = charcodes.BL	# Bottom Left
+			elif i == x2-1 and j == y2-1:	charmap[i+j*mw] = charcodes.BR	# Bottom Right
 
 			elif (i  > x and i  < x2-1)	\
-			and  (j == y or  j == y2-1):	charmap[j][i] = charcodes.HL	# Top/Bottom Walls
+			and  (j == y or  j == y2-1):	charmap[i+j*mw] = charcodes.HL	# Top/Bottom Walls
 
 			elif (j  > y and j  < y2-1)	\
-			and  (i == x or  i == x2-1):	charmap[j][i] = charcodes.VL	# Left/Right Walls
+			and  (i == x or  i == x2-1):	charmap[i+j*mw] = charcodes.VL	# Left/Right Walls
 
 #######################################################
 # Convoluted version of rect. Does more stuff...
@@ -79,38 +76,36 @@ func crect(x=0, y=0, w=0, h=0):
 			# if w and h are > 1, make a rect as normal
 			if w > 1:
 				if h > 1:
-					if   i == x    and j == y:		charmap[j][i] = charcodes.TL	# Top Left
-					elif i == x2-1 and j == y:		charmap[j][i] = charcodes.TR	# Top Right
-					elif i == x    and j == y2-1: 	charmap[j][i] = charcodes.BL	# Bottom Left
-					elif i == x2-1 and j == y2-1:	charmap[j][i] = charcodes.BR	# Bottom Right
+					if   i == x    and j == y:		charmap[i+j*mw] = charcodes.TL	# Top Left
+					elif i == x2-1 and j == y:		charmap[i+j*mw] = charcodes.TR	# Top Right
+					elif i == x    and j == y2-1: 	charmap[i+j*mw] = charcodes.BL	# Bottom Left
+					elif i == x2-1 and j == y2-1:	charmap[i+j*mw] = charcodes.BR	# Bottom Right
 
 					elif (i  > x and i  < x2-1)	\
-					and  (j == y or  j == y2-1):	charmap[j][i] = charcodes.HL	# Top/Bottom Walls
+					and  (j == y or  j == y2-1):	charmap[i+j*mw] = charcodes.HL	# Top/Bottom Walls
 
 					elif (j  > y and j  < y2-1)	\
-					and  (i == x or  i == x2-1):	charmap[j][i] = charcodes.VL	# Left/Right Walls
+					and  (i == x or  i == x2-1):	charmap[i+j*mw] = charcodes.VL	# Left/Right Walls
 			# if either w or h are not > 1, make a line and cap the ends with T-junctions
 				else:
-					if i == x:					charmap[j][i] = charcodes.LJ	# Left Junction/Cap
-					elif i > x and i < x2-1:	charmap[j][i] = charcodes.HL		# Row
-					elif i == x2-1:				charmap[j][i] = charcodes.RJ	# Right Junction/Cap
+					if i == x:					charmap[i+j*mw] = charcodes.LJ	# Left Junction/Cap
+					elif i > x and i < x2-1:	charmap[i+j*mw] = charcodes.HL		# Row
+					elif i == x2-1:				charmap[i+j*mw] = charcodes.RJ	# Right Junction/Cap
 			else:
 				if h > 1:
-					if j == y:					charmap[j][i] = charcodes.TJ	# Top Junction/Cap
-					elif j > y and j < y2-1:	charmap[j][i] = charcodes.VL		# Collumn
-					elif j == y2-1:				charmap[j][i] = charcodes.BJ	# Bottom Junction/Cap
+					if j == y:					charmap[i+j*mw] = charcodes.TJ	# Top Junction/Cap
+					elif j > y and j < y2-1:	charmap[i+j*mw] = charcodes.VL		# Collumn
+					elif j == y2-1:				charmap[i+j*mw] = charcodes.BJ	# Bottom Junction/Cap
 			# if neither w or h are > 1, make a single cross junction
 				else:
-					charmap[j][i] = charcodes.XJ	# Cross Junction/Full Block
+					charmap[i+j*mw] = charcodes.XJ	# Cross Junction/Full Block
 
 func make_tiles(parent):
-	var tilemap = []
+	var tilemap = {}
 	for j in range(mh):
-		var inner = []
 		for i in range(mw):
-			if charmap[j][i] > 0:
-				inner.append( create_tile( i, j, charmap[j][i], parent ) )
-		tilemap.append(inner)
+			if charmap[i+j*mw] > 0:
+				tilemap[Vector2(j, i)] = create_tile( i, j, charmap[i+j*mw], parent )
 	return tilemap
 
 func create_tile(x, y, char, parent):
