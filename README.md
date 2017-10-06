@@ -1,4 +1,4 @@
-# Godot-Basic-Roguelike
+# A basic Roguelike made in Godot
 
 I wondered how Godot would fare in making a roguelike, and I ended up with this. This is not a serious project: it's just a learning experiment that I may never even finish. I would like to take it as far as the [RogueBasin tutorial](http://www.roguebasin.com/index.php?title=Complete_Roguelike_Tutorial,_using_python%2Blibtcod), if I keep feeling motivated to.
 
@@ -11,20 +11,21 @@ I am only human, a noobish programmer, and not very experienced in Godot or in r
 All bitmap fonts are WIP and were created by me with Aseprite (with a bit of very useful help from [Grid Sage Games](http://www.gridsagegames.com/blog/2014/09/font-creation/)).
 
 
+
 ### **_Controls_**:
-*Q* 	- quit
-*F* 	- Shake Camera (for no reason, just a useless test)
-*SPACE* - Generate new map (currently using a fixed seed)
-
-*WASD / Arrows* - Move character
-*PgUp / PgDown* - switch font
-
-*1* 	- Toggle all debugging visuals
-*2* / H - Toggle mob HP info
-*3* 	- Toggle BSP leafs
-*4* 	- Toggle rooms
-*5* 	- Toggle hallways
-*6* 	- Toggle room info
+|key 				| action|
+|---|---|
+|**Q**				| Quit
+|**F**				| Shake Camera (for no reason, just a useless test)
+|**SPACE**			| Generate new map (currently using a fixed seed)
+|**WASD / Arrows**	| Move character
+|**PgUp / PgDown**	| Switch font
+|**1**				| (debug) Toggle all debugging visuals 
+|**2 / H**			| (debug) Toggle mob HP info 
+|**3** 	 			| (debug) Toggle BSP leafs 
+|**4** 	 			| (debug) Toggle rooms 
+|**5**				| (debug) Toggle hallways 
+|**6**				| (debug) Toggle room info 
 
 
 ### **_Gameplay_**:
@@ -33,6 +34,6 @@ Move towards an enemy to attack. Enemies attack you if you're standing adjacent 
 There's nothing but Orcs and Trolls in the map, for now.
 
 
-### **_Implementation_**:
+\*### **_Implementation_**:*\
 
 
