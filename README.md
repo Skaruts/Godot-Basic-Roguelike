@@ -34,6 +34,3 @@ Move towards an enemy to attack. Enemies attack you if you're standing adjacent 
 There's nothing but Orcs and Trolls in the map, for now.
 
 
-\*### **_Implementation_**:*\
-
-
