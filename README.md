@@ -1,6 +1,6 @@
 # A basic Roguelike made in Godot
 
-I wondered how Godot would fare in making a roguelike, and I ended up with this. This is not a serious project: it's just a learning experiment that I may never even finish. I would like to take it as far as the [RogueBasin tutorial](http://www.roguebasin.com/index.php?title=Complete_Roguelike_Tutorial,_using_python%2Blibtcod), if I keep feeling motivated to.
+I wondered how Godot would fare in making a roguelike, and I ended up with this. This is not a serious project: it's just a learning experiment that I may never even finish. I would like to take it as far as the [RogueBasin tutorial](http://www.roguebasin.com/index.php?title=Complete_Roguelike_Tutorial,_using_python%2Blibtcod&oldid=42760), if I keep feeling motivated to.
 
 If you feel this might be a good starting point for you, feel free to use it.
 
