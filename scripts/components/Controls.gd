@@ -4,11 +4,11 @@
 #######################################################################
 extends Node
 
-var key_repeat 		= settings.KEY_REPEAT
-var key_cooldown 	= 0.05
-var key_starting_cooldown = 0.250
-var key_timer 		= 0
-var max_key_timer 	= key_starting_cooldown
+var key_repeat			= settings.KEY_REPEAT
+var key_cooldown		= settings.KEY_COOLDOWN
+var key_1st_cooldown	= settings.KEY_1ST_COOLDOWN
+var key_timer 			= 0
+var max_key_timer 		= key_1st_cooldown
 
 var k_left	= false		# key flags
 var k_right	= false
@@ -101,7 +101,7 @@ func move_repeat(delta):
 	# if already moving since last frame, make the cooldown shorter
 	# else, make it longer for the first key press
 	if moving:	max_key_timer = key_cooldown
-	else:		max_key_timer = key_starting_cooldown
+	else:		max_key_timer = key_1st_cooldown
 
 	# check if any movement key is being pressed
 	moving = k_left or k_right or k_up or k_down

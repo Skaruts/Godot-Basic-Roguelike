@@ -1,6 +1,6 @@
 [gd_scene format=1]
 
-[node name="Mob" type="Node2D"]
+[node name="Entity" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
 

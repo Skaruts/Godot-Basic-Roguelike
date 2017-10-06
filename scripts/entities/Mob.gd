@@ -15,6 +15,7 @@ var sight_range
 var is_player = false
 
 func _ready():
+	add_to_group("MOBS")
 	label = get_node("Label")
 	set_debug( settings.SHOW_MOB_HP )
 	is_mob = true

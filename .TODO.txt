@@ -1,0 +1,24 @@
+#### To do
+
+>>>		Make Corpse a component, rather than an entity on its own
+>>>		Revert the player back to a simple entity (not mob - because it's conflicting with mob groups)
+>>>		Show combat feedback in the UI Log (currently being printed to stdout)
+
+>>		build a UI
+
+>>		Implement map objects, obstacles, interactibles
+>>		Implement items, inventories, enemy drops
+>>		Implement doors
+
+>>		Implement a TileMap node (to see if it performs better, when playing and switching textures)
+> 		Make mobs move randomly when idling
+>		Improve the combat system
+> 		improve the icon (change it)
+
+
+
+#### Done
+* added _solid_ property to tiles (no longer using collision map)
+* Converted arrays to 1D arrays (fovmap, tilemap)
+	- noticeable performance gain
+	- tilemap is now a dict of vector2 keys - trying it out ( tilemap[Vector2(y, x)] )

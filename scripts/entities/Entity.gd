@@ -12,7 +12,6 @@ var is_object = false
 var is_obstacle	= true # whether it blocks the path
 
 # properties
-
 var name
 var dungeon
 var pos = Vector2()
@@ -24,6 +23,8 @@ var sprite
 
 func _ready():
 	sprite = get_node("Sprite")
+	add_to_group("TEXTURED")
+	add_to_group("ENTITIES")
 	switch_texture()
 
 func set_position(p):

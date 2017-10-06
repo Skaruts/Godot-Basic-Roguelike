@@ -5,11 +5,13 @@ var pre_combat = preload("res://scripts/components/Combat.gd")
 # var pre_inventory = preload("res://scripts/components/MobInventory.gd")
 
 func _ready():
+	add_to_group("MAP_ENTITIES")
+
 	name = "Human"
 	sight_range = 15
 	is_obstacle = true
 
-	glyph = charcodes.HUMAN
+	glyph = utils.ascii(charcodes.HUMAN)
 	set_glyph( glyph )
 	set_foreground( colors.HUMAN )
 

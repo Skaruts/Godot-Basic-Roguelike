@@ -1,12 +1,12 @@
 extends "res://scripts/WorldGen/BSP_Factory/BSP_DungeonFactory.gd"
 
-var premob = preload("res://scenes/entities/Mob.tscn")
+#var premob = preload("res://scenes/entities/Mob.tscn")
 
 var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
 var pre_bsp_dungeon = preload("res://scripts/WorldGen/BSP_Factory/BSP_Dungeon.gd")
 var pre_leaf = preload("res://scripts/WorldGen/BSP_Factory/BSP_Leaf.gd")
 
-var collmap = [] # collision map
+var map = IntArray() # collision map
 var leaves 	= []
 var rooms 	= []
 var halls 	= []
@@ -41,11 +41,8 @@ func generate(custom_seed = null):
 	return dungeon
 
 func create_map():					# 1
-	for j in range( MH ):
-		var inner = IntArray()
-		for i in range( MW ):
-			inner.append( WALL_ID )
-		collmap.append( inner )
+	for j in range( MW*MH ):
+		map.append( WALL_ID )
 
 func create_leaves():
 	var root_leaf = pre_leaf.new( 0, 0, MW, MH )
@@ -82,7 +79,7 @@ func carve_rooms():
 	for r in rooms:
 		for j in range( r.y, r.y2 ):
 			for i in range( r.x, r.x2 ):
-				collmap[j][i] = RFLOOR_ID
+				map[i+j*MW] = RFLOOR_ID
 
 func carve_hallways():
 	for hall in halls:
@@ -97,20 +94,21 @@ func carve_hallways():
 
 func h_tunnel(x1, x2, y):
 	for x in range( min(x1, x2), max(x1, x2) + 1 ):
-		collmap[y][x] = HFLOOR_ID
+		map[x+y*MW] = HFLOOR_ID
 
 func v_tunnel(y1, y2, x):
 	for y in range( min(y1, y2), max(y1, y2) + 1 ):
-		collmap[y][x] = HFLOOR_ID
+		map[x+y*MW] = HFLOOR_ID
 
 func build_dungeon():
-	dungeon.collmap 			= collmap
+	# dungeon.map 				= map
 	dungeon.leaves 				= leaves
 	dungeon.rooms 				= rooms
 	dungeon.halls 				= halls
 	dungeon.player_starting_pos = player_starting_pos
 	dungeon.debug_stuff 		= debug_stuff
-	dungeon.build_map()
+
+	dungeon.build_map( map )
 
 func populate_dungeon():
 	for r in rooms:

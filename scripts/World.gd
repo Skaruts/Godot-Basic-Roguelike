@@ -7,19 +7,23 @@ var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
 
 var player = null
 var dungeon
+var took_turn = true
 
 func _ready():
 	create_map()
-	set_process(true)
+	set_fixed_process(true)
 
-func _process(delta):
+func _fixed_process(delta):
+	took_turn = false
 	if player.alive:
 		if player.controls.handle_keys(delta):
 			dungeon.take_turn(player)
+			took_turn = true
 
-func switch_texture():
-	player.switch_texture()
-	dungeon.switch_texture()
+
+#func switch_texture():
+#	player.switch_texture()
+#	dungeon.switch_texture()
 
 func create_map():
 	dungeon = bspgen.new().generate( settings.DEBUG_SEED )
@@ -30,8 +34,8 @@ func create_map():
 	create_player()
 
 	dungeon.calc_fovmap(player.pos, player.sight_range)
-	for m in dungeon.mobs:
-		m.set_visible( dungeon.fovmap[m.pos.y][m.pos.x] )
+	dungeon.calc_mobs_vis()
+
 
 func create_player():
 	if player != null: player.free()

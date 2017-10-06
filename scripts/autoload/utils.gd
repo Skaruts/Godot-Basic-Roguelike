@@ -3,24 +3,25 @@ extends Node
 
 
 ##############################################################
-# helper function to return a random int between imin and imax
+# Gets a random int between imin and imax
 #-------------------------------------------------------------
 func irand(imin, imax):
 	return randi() % int(imax - imin) + imin
 
+
 ##############################################################
-# Helper fucntion that returns an array of Vector2 points
-# using Bresenham's or Red Blob Games's line algorithms
+# Calculates a line in a grid, using Bresenham's or
+# RedBlobGames's line algorithms.
 #-------------------------------------------------------------
-func line(p0, p1, simple = true):
+# Returns an array of Vector2 points.
+#-------------------------------------------------------------
+func line(p0, p1, simple=true):
 	if simple: 	return red_blob_line(p0, p1)
 	else:		return bresenham(p0, p1)
 
-
-##############################################################
-# Adapted from Red Blob Games's line drawing implementation:
+# Red Blob Game's line algorithm
+# Adapted from:
 # https://www.redblobgames.com/grids/line-drawing.html
-#-------------------------------------------------------------
 func red_blob_line(p0, p1):
     var points = []
     var N = diagonal_distance(p0, p1)
@@ -43,10 +44,9 @@ func round_point(p):
     return Vector2( round(p.x), round(p.y) )
 
 
-##############################################################
+# Bresenham's line algorithm
 # Adapted from Luke M.'s python implementation:
 # https://gist.github.com/flags/1132363
-#-------------------------------------------------------------
 func bresenham(p0, p1):
 	var points = []
 
@@ -88,18 +88,23 @@ func bresenham(p0, p1):
 		if error >= 0.5:
 			y += ystep
 			error -= 1.0
-
 	return points
 
-# swap the x and y values of a Vector2
+# Swap the x and y values of a Vector2
 func vswap(vec2):
 	return Vector2(vec2.y, vec2.x)
 
 
 ##############################################################
-# Helper functions that round a number (num) to a multiple (mult)
+# Rounds a number 'num' to the nearest multiple of 'mult'.
+# (Useful for grid operations.)
 #-------------------------------------------------------------
-# automatically rounds to the nearest multiple
+# Returns an int.
+#
+# mult()  - Rounds to the nearest multiple (up or down)
+# cmult() - Ceils to the nearest multiple
+# fmult() - Floors to the nearest multiple
+#-------------------------------------------------------------
 func mult(num, mult):
 	if mult == 0: return num
 	var remainder = num % mult
@@ -111,23 +116,20 @@ func mult(num, mult):
 	if diff1 < diff2:	return num + mult - remainder
 	else:				return num + mult + remainder
 
-# ceil to multiple of mult
 func cmult(num, mult):
 	if mult == 0: return num
 	var remainder = num % mult
 	if remainder == 0: return num	# remainder of 0 = num is multiple of mult, so return it (not needed in fmult)
 	return num + mult - remainder
 
-# floor to multiple of mult
 func fmult(num, mult):
 	if mult == 0: return num
 	var remainder = num % mult
 	return num - remainder
 
-# nmult() should round to next multiple of mult
-# with the option of the specified dir (ceil or floor)
-# and of excluding mult (never allows rounding
-# to itself if 'true')
+# nmult() should round to next multiple of mult with the option to
+# specify dir (ceil or floor) and of excluding mult
+# (to never allow rounding to itself if exc=true)
 func nmult(num, mult, dir = null, exc = true):
 	# problem:
 	#	ceil always excludes num by default
@@ -138,3 +140,47 @@ func nmult(num, mult, dir = null, exc = true):
 	# return num + mult - remainder		# this only works for ceil excluding num
 	# return num - mult + remainder		# this only works for floor including num
 	pass
+
+
+##############################################################
+# Lists files in a directory
+#-------------------------------------------------------------
+# Returns an Array of strings (file names).
+#
+# If a file extension is specified in 'ext' (ex: "png" or
+# ".png"), it lists only the files ending with that extension.
+#-------------------------------------------------------------
+func list_files(path, ext=""):
+	var files = []
+	var dir = Directory.new()
+
+	if ext != "" and not ext[0] == ".":
+		ext = "." + ext
+
+	dir.open( path )
+	dir.list_dir_begin()
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			print ("1 file: ", file)
+			break
+		elif ext != "" and file.ends_with( ext ):
+			files.append( file )
+			print ("2 file: ", file)
+		elif file != "." and file != "..":
+			files.append( file )
+			print ("3 file: ", file)
+
+	dir.list_dir_end()
+	return files
+
+
+##############################################################
+# Convert a single character to its ascii code
+#-------------------------------------------------------------
+# Returns an int. Accepts only one character (if there's more
+# characters they are ignored).
+#-------------------------------------------------------------
+func ascii(char):
+	var asc = char[0].to_ascii()
+	return asc[0]

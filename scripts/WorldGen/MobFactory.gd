@@ -1,7 +1,7 @@
 extends Node
 
 var pre_player = preload("res://scenes/entities/Player.tscn")
-var pre_mob = preload("res://scenes/entities/Mob.tscn")
+var pre_ent = preload("res://scenes/entities/Entity.tscn")
 
 # var pre_player = preload("res://scripts/entities/mobs/Player.gd")
 # var pre_orc = preload("res://scripts/entities/mobs/Orc.gd")
@@ -10,7 +10,7 @@ var pre_mob = preload("res://scenes/entities/Mob.tscn")
 func create_mob(pos, type, dungeon):
 	var mob
 	if not type in ['p', 'P', 'player']:
-		mob = pre_mob.instance()
+		mob = pre_ent.instance()
 		# if type in ['o', 'O', 'orc']:		mob.set_script( pre_orc.new() )
 		# elif type in ['t', 'T', 'troll']:	mob.set_script( pre_troll.new() )
 

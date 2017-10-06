@@ -11,8 +11,10 @@ var TW; var TH	# tile width, height
 
 var discovered = false
 var darkened = false
+var is_solid = false
 
 func _ready():
+	add_to_group("TEXTURED")
 	set_centered(false)
 	set_region(true)
 	set_process(true)
@@ -24,7 +26,7 @@ func init(x, y, g):
 
 func set_position(p):
 	pos = p
-	set_global_pos(pos*TS)
+	set_pos(pos*TS)
 
 func switch_texture():
 	set_texture( textures.get_texture() )
@@ -45,8 +47,8 @@ func set_foreground(foreground):
 	set_modulate(fg)
 
 func set_background(background):
-	# Not sure how this will work. May need an entirely new
-	# layer of tiles for the background colors.
+	# Don't think this will work. May need an entirely new
+	# layer of tiles for background colors.
 	pass
 
 func set_visible(show):
@@ -60,11 +62,6 @@ func set_visible(show):
 		else:			set_hidden(true)
 
 func set_dark(dark):
-	var color = get_modulate()
-	var r = color.r
-	var g = color.g
-	var b = color.b
-
 	if dark and not darkened:
 		set_modulate( fg_dark )
 		darkened = true

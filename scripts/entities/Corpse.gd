@@ -13,8 +13,11 @@ var decay_turns = turns/10
 var alpha_decay_turns = turns - decay_turns
 
 func _ready():
+	add_to_group("CORPSES")
+	add_to_group("MAP_ENTITIES")
+
 	is_obstacle = false
-	glyph = charcodes.CORPSE
+	glyph = utils.ascii(charcodes.CORPSE)
 	set_glyph( glyph )
 	set_foreground( colors.CORPSE )
 
@@ -29,9 +32,6 @@ func take_turn():
 	else:			die()
 
 func decay():
-	# could make it so that the starting color is the dead mob's color
-	# morph it to a red-ish gray, and decay into plain gray until it's gone
-
 	var r = fg.r*255	# convert to 0-255 range
 	var g = fg.g*255
 	var b = fg.b*255
