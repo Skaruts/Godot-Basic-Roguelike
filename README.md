@@ -4,7 +4,7 @@ I wondered how Godot would fare in making a roguelike, and I ended up with this.
 
 If you feel this might be a good starting point for you, feel free to use it.
 
-I decided to do a lot of stuff through code, that seemed to make more sense to me that way. I decided against using a TileMap, especially, because I don't really enjoy creating tilesets in Godot, and also because the maps are supposed to be procedurally generated anyway (although I want to experiment with implementing it through code too, to see if it performs better).
+I decided to do a lot of stuff through code that seemed to make more sense to me that way. I decided against using a TileMap, especially, because I don't really enjoy creating tilesets in Godot, and also because the maps are supposed to be procedurally generated anyway (although I want to experiment with implementing it through code too, to see if it performs better).
 
 I am only human, a noobish programmer, and not very experienced in Godot or in roguelike deving. Use this at your own risk.
 
