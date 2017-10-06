@@ -58,13 +58,14 @@ func rect(x=0, y=0, w=0, h=0):
 			and  (i == x or  i == x2-1):	charmap[j][i] = charcodes.VL	# Left/Right Walls
 
 #######################################################
-# Convoluted version of rect. Probably redundant.
-#
+# Convoluted version of rect. Does more stuff...
+# -----------------------------------------------------
 # Checks w and h, to decide whether to draw a rect,
 # a line or a single X-junction.
 #
-# NOT TESTED:
-# - should be able to make intersecting lines and rects
+# I have NOT TESTED this function.
+# Should be able to make intersecting lines and rects
+# and connect them to existing lines.
 # -----------------------------------------------------
 func crect(x=0, y=0, w=0, h=0):
 	if w == 0: w = mw
