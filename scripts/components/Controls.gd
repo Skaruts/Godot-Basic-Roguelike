@@ -65,25 +65,25 @@ func move_once():
 	var parent = get_parent()
 
 	if k_left and not moving_left and not k_right:
-		has_moved = move("left")
+		has_moved = move( -1, 0 )
 		moving_left = true
 	elif not k_left and moving_left:
 		moving_left = false
 
 	if k_right and not moving_right and not k_left:
-		has_moved = move("right")
+		has_moved = move( 1, 0 )
 		moving_right = true
 	elif not k_right and moving_right:
 		moving_right = false
 
 	if k_up and not moving_up and not k_down:
-		has_moved = move("up")
+		has_moved = move( 0, -1 )
 		moving_up = true
 	elif not k_up and moving_up:
 		moving_up = false
 
 	if k_down and not moving_down and not k_up:
-		has_moved = move("down")
+		has_moved = move( 0, 1 )
 		moving_down = true
 	elif not k_down and moving_down:
 		moving_down = false
