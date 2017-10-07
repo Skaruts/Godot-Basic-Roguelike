@@ -155,7 +155,7 @@ func clear_map():
 	for t in tilemap:
 		t.get_parent().remove_child(t)
 		t.free()
-	tilemap = []
+	tilemap.clear()
 
 #func switch_texture():
 #	var TS = textures.get_tile_size()
