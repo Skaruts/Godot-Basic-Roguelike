@@ -129,7 +129,7 @@ func make_tiles(parent):
 	for j in range(mh):
 		for i in range(mw):
 			if charmap[i+j*mw] > 0:
-				tilemap[i+j*mw] = create_tile( i, j, charmap[i+j*mw], parent )
+				tilemap.append( create_tile( i, j, charmap[i+j*mw], parent ) )
 	return tilemap
 
 func create_tile(x, y, char, parent):
