@@ -47,9 +47,8 @@ func set_foreground(foreground):
 	set_modulate(fg)
 
 func set_background(background):
-	# Don't think this will work. May need an entirely new
-	# layer of tiles for background colors.
-	pass
+	bg = background
+	# need to add a second sprite for this
 
 func set_visible(show):
 	if show:	# show
