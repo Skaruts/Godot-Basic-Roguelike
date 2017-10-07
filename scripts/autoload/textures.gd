@@ -17,7 +17,7 @@ func set_texture(ct):
 func load_textures():
 	var files = utils.list_files("res://fonts/", "png")
 	for f in files:
-		print("f: ", f)
+		# print("f: ", f)
 		_textures.append( load("res://fonts/" + f) )
 	set_texture(_currTexIndex)
 
