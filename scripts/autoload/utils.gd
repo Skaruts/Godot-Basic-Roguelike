@@ -162,14 +162,11 @@ func list_files(path, ext=""):
 	while true:
 		var file = dir.get_next()
 		if file == "":
-			print ("1 file: ", file)
 			break
 		elif ext != "" and file.ends_with( ext ):
 			files.append( file )
-			print ("2 file: ", file)
 		elif file != "." and file != "..":
 			files.append( file )
-			print ("3 file: ", file)
 
 	dir.list_dir_end()
 	return files
