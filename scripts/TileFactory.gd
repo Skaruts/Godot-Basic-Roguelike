@@ -1,7 +1,7 @@
 extends Node
 
-var charmap = []
-var clear_charmap = []
+var charmap = Array()
+var clear_charmap = Array()
 var mw = 0
 var mh = 0
 
@@ -13,10 +13,10 @@ func _init(w, h):
 func create_charmap():
 	for i in range(mw*mh):
 		clear_charmap.append(0)
-	charmap = clear_charmap
+	charmap = Array(clear_charmap)
 
 func clear():
-	charmap = clear_charmap
+	charmap = Array(clear_charmap)
 
 
 #######################################################
@@ -125,11 +125,11 @@ func frect(char, x=0, y=0, w=0, h=0):	# add support alpha value
 
 
 func make_tiles(parent):
-	var tilemap = {}
+	var tilemap = []
 	for j in range(mh):
 		for i in range(mw):
 			if charmap[i+j*mw] > 0:
-				tilemap[Vector2(j, i)] = create_tile( i, j, charmap[i+j*mw], parent )
+				tilemap[i+j*mw] = create_tile( i, j, charmap[i+j*mw], parent )
 	return tilemap
 
 func create_tile(x, y, char, parent):
