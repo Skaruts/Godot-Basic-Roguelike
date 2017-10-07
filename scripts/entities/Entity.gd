@@ -17,6 +17,7 @@ var dungeon
 var pos = Vector2()
 var glyph = 0
 var fg
+var bg
 
 # sub nodes
 var sprite
@@ -46,6 +47,10 @@ func set_glyph(g):
 func set_foreground(foreground):
 	fg = foreground
 	sprite.set_modulate(fg)
+
+func set_background(background):
+	bg = background
+	# need to add a second sprite for this
 
 # sets the map this entity is currently in
 func set_dungeon(d):
