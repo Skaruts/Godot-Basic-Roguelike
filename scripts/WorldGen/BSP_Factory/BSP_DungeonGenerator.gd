@@ -6,7 +6,7 @@ var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
 var pre_bsp_dungeon = preload("res://scripts/WorldGen/BSP_Factory/BSP_Dungeon.gd")
 var pre_leaf = preload("res://scripts/WorldGen/BSP_Factory/BSP_Leaf.gd")
 
-var map = IntArray() # collision map
+var map 	= []
 var leaves 	= []
 var rooms 	= []
 var halls 	= []
