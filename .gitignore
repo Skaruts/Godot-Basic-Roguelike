@@ -2,3 +2,4 @@ export.cfg
 *.old
 *.old2
 *.bak
+scripts/GDScript_Tests.gd

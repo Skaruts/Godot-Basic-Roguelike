@@ -1,22 +1,17 @@
-extends Node2D
+extends "res://scripts/ui/UI_Widget.gd"
 
-var TS = textures.get_tile_size()
-onready var label = get_node("Label")
-var parent
+var frame = []
 
-func _ready():
-	set_fixed_process(true)
-	#set_label()
-	label.set_pos( Vector2(1*TS, 1*TS) )
+func _init(pos, w=0, h=0):
+	set_position(pos)
+	set_size(w, h)
 
+func build_frame():
+	var tile_fac = load("res://scripts/TileFactory.gd").new(w, h)
+	var TS = textures.get_tile_size()
+	tile_fac.rect()
+	frame = tile_fac.make_tiles(self)
 
-#func set_label():
-	#label.set_text( "HP: " + str(get_parent().world.player.combat.hp) )
-
-func _fixed_process(delta):
-	if get_parent().world.took_turn:
-		label.set_text( "HP: " + str(get_parent().world.player.combat.hp) )
-
-# func take_turn():
-# 	label.set_text( "HP: ", get_parent().world.player.combat.hp )
-
+func set_size(w, h):
+	.set_size(w, h)
+	build_frame()

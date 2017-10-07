@@ -7,7 +7,6 @@ var pos = Vector2()
 var glyph
 var fg; var fg_dark; var bg
 var tex_x; var tex_y; var tex_w; var tex_h
-var TW; var TH	# tile width, height
 
 var discovered = false
 var darkened = false

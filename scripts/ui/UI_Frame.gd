@@ -1,11 +1,12 @@
-extends Node2D
+extends "res://scripts/ui/UI_Widget.gd"
 
 var pre_tilefactory = preload("res://scripts/TileFactory.gd")
-var tilemap = {}
+var tilemap = []
 
 
 func _ready():
-	build_frame()
+	#build_frame()
+	pass
 
 func build_frame():
 	var w = settings.GRID_WIDTH

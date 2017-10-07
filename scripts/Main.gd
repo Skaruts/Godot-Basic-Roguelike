@@ -2,19 +2,20 @@ extends Node2D
 
 var world
 var map_view
-var side_panel
-var ui_frame
-
-var ui_position = 1 # else it's on the right
+var panel1
+var panel2
+var panel3
+# var ui_frame
 
 func _ready():
+	# just a file where I can test little things
+	#var test = load("res://scripts/GDScript_Tests.gd").new()
+	#add_child( test )
+
 	world = get_tree().get_root().get_node("main/Map View/Viewport/World")
-	map_view = get_node("Map View")
-	side_panel = get_node("Side Panel")
-	ui_frame = get_node("UI Frame")
 
 	set_screen_size()
-	position_ui()
+	create_ui()
 
 	set_process_input(true)
 
@@ -47,15 +48,34 @@ func set_screen_size():
 	OS.set_window_position( Vector2( screen_width/2 - window_width/2, screen_height/2 - window_height/2 ) )
 	# print("WS: ", OS.get_window_size(), "  |  TS: ", TS, "  |  SS: ", OS.get_screen_size())
 
+func create_ui():
+	map_view = get_node("Map View")
+	map_view.set_size(34, 34)
+
+	panel1 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 12, settings.GRID_HEIGHT-6)
+	panel2 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 18, settings.GRID_HEIGHT)
+	panel3 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 46, 6)
+	add_child(panel1)
+	add_child(panel2)
+	add_child(panel3)
+
+	position_ui()
+
 func position_ui():
-	var TS = textures.get_tile_size()
+	# settings.INVERT_UI = 1
 	if settings.INVERT_UI == 0:
-		map_view.set_pos( Vector2(12*TS, 0*TS) )			# TODO: I'd like to not have to multiply by TS here
-		# side_panel.set_pos( Vector2(50*TS, 1*TS) )
+		map_view.set_position( Vector2(12, 0) )
+		panel1.set_position( Vector2(0, 0) )
+		panel2.set_position( Vector2(46, 0) )
+		panel3.set_position( Vector2(0, settings.GRID_HEIGHT-6) )
 	else:
-		map_view.set_pos( Vector2(18*TS, 0*TS) )
-		# side_panel.set_pos( Vector2(1*TS, 1*TS) )
-	map_view.get_node("Viewport").set_rect( Rect2(Vector2(), Vector2(34*TS, 34*TS)) )
+		map_view.set_position( Vector2(18, 0) )
+		panel1.set_position( Vector2(52, 0) )
+		panel2.set_position( Vector2(0, 0) )
+		panel3.set_position( Vector2(18, settings.GRID_HEIGHT-6) )
+
+	map_view.set_size(34, 34)	# why is this really needed?? (if not here, the view will be misplaced after switching font)
+
 
 func switch_texture(dir):
 	textures.switch_texture(dir)
