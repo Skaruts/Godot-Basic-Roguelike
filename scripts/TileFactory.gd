@@ -1,6 +1,7 @@
 extends Node
 
 var charmap = []
+var clear_charmap = []
 var mw = 0
 var mh = 0
 
@@ -11,8 +12,16 @@ func _init(w, h):
 
 func create_charmap():
 	for i in range(mw*mh):
-		charmap.append(0)
+		clear_charmap.append(0)
+	charmap = clear_charmap
 
+func clear():
+	charmap = clear_charmap
+
+
+#######################################################
+# Draws a line to the charmap.
+# -----------------------------------------------------
 func line(x, y, orientation, length=0, erase=false):
 	if length:
 		if orientation in ['horizontal', 'h']:
@@ -32,7 +41,7 @@ func __linev(x, y, y2, erase):
 
 #######################################################
 # draws a rectangle shape to the charmap
-# complete with corners.
+# complete with corners, using ascii line art.
 # -----------------------------------------------------
 func rect(x=0, y=0, w=0, h=0):
 	if w == 0: w = mw
@@ -100,6 +109,21 @@ func crect(x=0, y=0, w=0, h=0):
 				else:
 					charmap[i+j*mw] = charcodes.XJ	# Cross Junction/Full Block
 
+# filled rect
+func frect(char, x=0, y=0, w=0, h=0):	# add support alpha value
+	if w == 0: w = mw
+	if h == 0: h = mh
+
+	var x2 = min(x+w, mw)
+	var y2 = min(y+h, mh)
+
+	for j in range(y, y2):
+		for i in range(x, x2):
+			charmap[i+j*mw] = char
+
+
+
+
 func make_tiles(parent):
 	var tilemap = {}
 	for j in range(mh):
@@ -118,3 +142,5 @@ func create_tile(x, y, char, parent):
 	tile.set_owner( parent )
 
 	return tile
+
+
