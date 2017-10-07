@@ -27,5 +27,5 @@ func clear_map():
 	for t in tilemap:
 		t.get_parent().remove_child(t)
 		t.free()
-	tilemap = {}
+	tilemap.clear()
 
