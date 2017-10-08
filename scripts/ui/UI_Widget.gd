@@ -6,6 +6,8 @@ var w = 1
 var h = 1
 var fg
 var bg
+func _ready():
+	add_to_group("UI_ELEMENTS")
 
 #func _init(pos=Vector2(), w=1, h=1):
 #	set_position(pos)

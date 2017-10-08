@@ -15,7 +15,7 @@ func init(pos, g=0):
 	set_glyph(g)
 
 func _ready():
-	add_to_group("TEXTURED")
+	add_to_group("CELLS")
 
 func set_position(p):
 	pos = p
