@@ -182,9 +182,12 @@ func ascii(char):
     var asc = char[0].to_ascii()
     return asc[0]
 
+
 ##############################################################
 # Converts a glyph's index to texture coordinates
 #-------------------------------------------------------------
 func tex_coords(index):
     var TS = textures.get_tile_size()
     return Rect2( Vector2( index % 16 * TS, int(index / 16) * TS ), Vector2(TS, TS) )
+
+
