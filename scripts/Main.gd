@@ -2,9 +2,7 @@ extends Node2D
 
 var world
 var map_view
-var panel1
-var panel2
-var panel3
+var ui_panels = {}
 # var ui_frame
 
 func _ready():
@@ -49,30 +47,40 @@ func set_screen_size():
 	# print("WS: ", OS.get_window_size(), "  |  TS: ", TS, "  |  SS: ", OS.get_screen_size())
 
 func create_ui():
+
+	# put this code in a ui_main script
+
 	map_view = get_node("Map View")
 	map_view.set_size(34, 34)
 
-	panel1 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 12, settings.GRID_HEIGHT-6)
-	panel2 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 18, settings.GRID_HEIGHT)
-	panel3 = load("res://scripts/ui/UI_Panel.gd").new(Vector2(), 46, 6)
-	add_child(panel1)
-	add_child(panel2)
-	add_child(panel3)
+
+	ui_panels["panel1"] = load("res://scripts/ui/UI_Panel1.gd").new()
+	ui_panels["panel2"] = load("res://scripts/ui/UI_Panel2.gd").new()
+	ui_panels["panel3"] = load("res://scripts/ui/UI_Panel3.gd").new()
+	ui_panels["panel1"].set_size(12, settings.GRID_HEIGHT-6)
+	ui_panels["panel2"].set_size(18, settings.GRID_HEIGHT)
+	ui_panels["panel3"].set_size(46, 6)
+	add_child( ui_panels["panel1"] )
+	add_child( ui_panels["panel2"] )
+	add_child( ui_panels["panel3"] )
 
 	position_ui()
 
 func position_ui():
+
+	# put this code in a ui_main script
+
 	# settings.INVERT_UI = 1
 	if settings.INVERT_UI == 0:
 		map_view.set_position( Vector2(12, 0) )
-		panel1.set_position( Vector2(0, 0) )
-		panel2.set_position( Vector2(46, 0) )
-		panel3.set_position( Vector2(0, settings.GRID_HEIGHT-6) )
+		ui_panels["panel1"].set_position( Vector2(0, 0) )
+		ui_panels["panel2"].set_position( Vector2(46, 0) )
+		ui_panels["panel3"].set_position( Vector2(0, settings.GRID_HEIGHT-6) )
 	else:
 		map_view.set_position( Vector2(18, 0) )
-		panel1.set_position( Vector2(52, 0) )
-		panel2.set_position( Vector2(0, 0) )
-		panel3.set_position( Vector2(18, settings.GRID_HEIGHT-6) )
+		ui_panels["panel1"].set_position( Vector2(52, 0) )
+		ui_panels["panel2"].set_position( Vector2(0, 0) )
+		ui_panels["panel3"].set_position( Vector2(18, settings.GRID_HEIGHT-6) )
 
 	map_view.set_size(34, 34)	# why is this really needed?? (if not here, the view will be misplaced after switching font)
 

@@ -11,7 +11,7 @@ func _ready():
 
 	glyph = utils.ascii(charcodes.PLAYER)
 	set_glyph( glyph )
-	set_foreground( colors.PLAYER )
+	set_fg( colors.PLAYER )
 
 	# components
 	controls = pre_controls.new()
@@ -19,12 +19,11 @@ func _ready():
 
 	combat = pre_combat.new()
 	combat.hp = 1000
+	combat.max_hp = 1000
 	combat.strength = 5
 	combat.defense = 2
 	add_component("combat", combat)
 
-	if debug:
-		# label.set_text(str(hp))
-		label.set_pos( Vector2(0, -TS/2) )
+
 
 

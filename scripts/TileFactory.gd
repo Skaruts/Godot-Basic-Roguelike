@@ -1,5 +1,7 @@
 extends Node
 
+var pre_tile = preload("res://scripts/Tile.gd")
+var pre_cell = preload("res://scripts/Cell.gd")
 var charmap = Array()
 var clear_charmap = Array()
 var mw = 0
@@ -121,26 +123,24 @@ func frect(char, x=0, y=0, w=0, h=0):	# add support alpha value
 		for i in range(x, x2):
 			charmap[i+j*mw] = char
 
-
-
-
-func make_tiles(parent):
+func make_tiles(parent, fg, bg, is_cell=false):
 	var tilemap = []
 	for j in range(mh):
 		for i in range(mw):
 			if charmap[i+j*mw] > 0:
-				tilemap.append( create_tile( i, j, charmap[i+j*mw], parent ) )
+				tilemap.append( _create_tile( i, j, charmap[i+j*mw], parent, fg, bg, is_cell ) )
 	return tilemap
 
-func create_tile(x, y, char, parent):
-	var tile = load("res://scripts/Tile.gd").new()
+func _create_tile(x, y, char, parent, fg, bg, is_cell ):
+	var tile
+	if is_cell: tile = pre_cell.new()
+	else: 		tile = pre_tile.new()
+	tile.init( Vector2(x, y), char )
 
-	tile.init( x , y, char )
-	tile.set_foreground( colors.UI_FRAMES )
-
+	tile.set_fg( fg )
+	tile.set_bg( bg )
 	parent.add_child( tile )
 	tile.set_owner( parent )
 
 	return tile
-
 

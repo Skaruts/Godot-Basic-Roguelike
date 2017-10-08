@@ -4,7 +4,12 @@ var parent
 var pos = Vector2()
 var w = 1
 var h = 1
+var fg
+var bg
 
+#func _init(pos=Vector2(), w=1, h=1):
+#	set_position(pos)
+#	set_size(w, h)
 
 func set_position(p):
 	var TS = textures.get_tile_size()

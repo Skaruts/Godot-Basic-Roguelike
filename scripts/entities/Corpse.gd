@@ -15,11 +15,9 @@ var alpha_decay_turns = turns - decay_turns
 func _ready():
 	add_to_group("CORPSES")
 	add_to_group("MAP_ENTITIES")
-
 	is_obstacle = false
-	glyph = utils.ascii(charcodes.CORPSE)
-	set_glyph( glyph )
-	set_foreground( colors.CORPSE )
+
+	set_fg( colors.CORPSE )
 
 func get_description():
 	return base_desc + name
@@ -49,7 +47,7 @@ func decay():
 
 	turns -= 1
 	if decay_turns > 1: decay_turns -= 1
-	set_foreground( Color(r/255, g/255, b/255, a/255) )	# re-convert to 0-1 float range
+	set_fg( Color(r/255, g/255, b/255, a/255) )	# re-convert to 0-1 float range
 
 
 # func resurect():

@@ -20,6 +20,6 @@ func create_mob(pos, type, dungeon):
 		mob = pre_player.instance()
 		# mob.set_script( load("res://scripts/entities/mobs/Player.gd") )
 
+	mob.init(pos)
 	mob.set_dungeon(dungeon)
-	mob.set_position( pos )
 	return mob

@@ -13,7 +13,7 @@ func _ready():
 
 	glyph = utils.ascii(charcodes.ORC)
 	set_glyph( glyph )
-	set_foreground( colors.ORC )
+	set_fg( colors.ORC )
 
 	# components
 	ai = pre_ai.new()
@@ -25,8 +25,5 @@ func _ready():
 	combat.defense = 0
 	add_component("combat", combat)
 
-	if debug:
-		# label.set_text(str(hp))
-		label.set_pos( Vector2(0, -TS/2) )
 
 

@@ -20,6 +20,11 @@ func _ready():
 	set_debug( settings.SHOW_MOB_HP )
 	is_mob = true
 
+	var TS = textures.get_tile_size()
+	if debug:
+		# label.set_text(str(hp))
+		label.set_pos( Vector2(0, -TS/2) )
+
 func take_turn(player):
 	# print ("ai taking turns")
 	ai.take_turn(player)

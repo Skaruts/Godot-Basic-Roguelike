@@ -1,6 +1,6 @@
 [gd_scene format=1]
 
-[node name="Entity" type="Node2D"]
+[node name="Entity" type="Sprite"]
 
 [node name="Label" type="Label" parent="."]
 
@@ -15,11 +15,5 @@ margin/bottom = 14.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="Sprite" type="Sprite" parent="."]
-
-centered = false
-region = true
-region_rect = Rect2( 0, 96, 24, 24 )
 
 

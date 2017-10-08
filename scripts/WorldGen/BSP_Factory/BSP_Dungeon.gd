@@ -29,15 +29,19 @@ func build_map( map ):
 	w = int(w)
 	for j in range(h):
 		for i in range(w):
-			var tile = pre_tile.new()
-
+			var tile
 			if map[i+j*w] in [RFLOOR_ID, HFLOOR_ID]:
-				tile.init( i, j, utils.ascii(charcodes.FLOOR))
-				tile.set_foreground( colors.STONE_FLOOR )
+				tile = pre_tile.new()
+				tile.init( Vector2(i, j), utils.ascii(charcodes.FLOOR) )
+				tile.set_fg( colors.STONE_FLOOR )
 			elif map[i+j*w] == WALL_ID:
-				tile.init( i , j, utils.ascii(charcodes.WALL))
-				tile.set_foreground( colors.STONE_WALL )
+				tile = pre_tile.new()
+				tile.init( Vector2(i, j), utils.ascii(charcodes.WALL) )
+				tile.set_fg( colors.STONE_WALL )
 				tile.is_solid = true
+
+
+
 
 			# TODO: make doors
 
@@ -142,8 +146,9 @@ func kill_entity(ent, type):
 
 func add_corpse(cname, pos):
 	var corpse = pre_corpse.instance()
+	corpse.init(pos, utils.ascii(charcodes.CORPSE))
 	corpse.name = cname
-	corpse.set_position( pos )
+
 	corpse.set_dungeon(self)
 	corpses.append(corpse)
 
