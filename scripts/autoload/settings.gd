@@ -3,7 +3,7 @@ extends Node
 
 # debug stuff
 # ------------------------------------------------------------
-var DEBUG_SEED = 0	# overrides factory random seed generation
+var DEBUG_SEED = 0  # overrides factory random seed generation
 
 var DEBUG_LEAF = false
 var DEBUG_HALL = false
@@ -17,14 +17,14 @@ var DEBUG = true
 
 # settings
 # ------------------------------------------------------------
-var TILE_DARK_MULT 		= 0.4		# multiplier for darkening tile colors (used in Tile.set_foreground())
-var GRID_WIDTH			= 64
-var GRID_HEIGHT			= 40
-var MAP_WIDTH 			= 48
-var MAP_HEIGHT 			= 48
-var KEY_REPEAT 			= true		# if false, you move once per key press
-var KEY_COOLDOWN 		= 0.10
-var KEY_1ST_COOLDOWN	= 0.250
-var INVERT_UI 			= false
+var TILE_DARK_MULT      = 0.4       # multiplier for darkening tile colors (used in Tile.set_foreground())
+var GRID_WIDTH          = 64
+var GRID_HEIGHT         = 40
+var MAP_WIDTH           = 48
+var MAP_HEIGHT          = 48
+var KEY_REPEAT          = true      # if false, you move once per key press
+var KEY_COOLDOWN        = 0.10
+var KEY_1ST_COOLDOWN    = 0.250
+var INVERT_UI           = false
 
 # func _init():

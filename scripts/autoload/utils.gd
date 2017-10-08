@@ -6,7 +6,7 @@ extends Node
 # Gets a random int between imin and imax
 #-------------------------------------------------------------
 func irand(imin, imax):
-	return randi() % int(imax - imin) + imin
+    return randi() % int(imax - imin) + imin
 
 
 ##############################################################
@@ -16,8 +16,8 @@ func irand(imin, imax):
 # Returns an array of Vector2 points.
 #-------------------------------------------------------------
 func line(p0, p1, simple=true):
-	if simple: 	return red_blob_line(p0, p1)
-	else:		return bresenham(p0, p1)
+    if simple:  return red_blob_line(p0, p1)
+    else:       return bresenham(p0, p1)
 
 # Red Blob Game's line algorithm
 # Adapted from:
@@ -27,8 +27,8 @@ func red_blob_line(p0, p1):
     var N = diagonal_distance(p0, p1)
     for step in range(N): # (var step = 0; step <= N; step++):
         var t
-        if N == 0: 	t = 0.0
-        else: 		t = step / N
+        if N == 0:  t = 0.0
+        else:       t = step / N
         points.append( round_point( utils.lerp_point(p0, p1, t) ) )
     return points
 
@@ -48,51 +48,51 @@ func round_point(p):
 # Adapted from Luke M.'s python implementation:
 # https://gist.github.com/flags/1132363
 func bresenham(p0, p1):
-	var points = []
+    var points = []
 
-	var steep = abs(p1.y-p0.y) > abs(p1.x-p0.x)
-	if steep:
-		p0 = utils.vswap(p0)
-		p1 = utils.vswap(p1)
+    var steep = abs(p1.y-p0.y) > abs(p1.x-p0.x)
+    if steep:
+        p0 = utils.vswap(p0)
+        p1 = utils.vswap(p1)
 
-	if p0.x > p1.x:
-		# 'flippin and floppin'
-		var _x0 = int(p0.x)
-		var _x1 = int(p1.x)
-		p0.x = _x1
-		p1.x = _x0
+    if p0.x > p1.x:
+        # 'flippin and floppin'
+        var _x0 = int(p0.x)
+        var _x1 = int(p1.x)
+        p0.x = _x1
+        p1.x = _x0
 
-		var _y0 = int(p0.y)
-		var _y1 = int(p1.y)
-		p0.y = _y1
-		p1.y = _y0
+        var _y0 = int(p0.y)
+        var _y1 = int(p1.y)
+        p0.y = _y1
+        p1.y = _y0
 
-	var dx = p1.x - p0.x
-	var dy = abs(p1.y - p0.y)
-	var error = 0
-	var derr = dy/float(dx)
+    var dx = p1.x - p0.x
+    var dy = abs(p1.y - p0.y)
+    var error = 0
+    var derr = dy/float(dx)
 
-	var ystep = 0
-	var y = p0.y
+    var ystep = 0
+    var y = p0.y
 
-	if p0.y < p1.y: ystep = 1
-	else: 			ystep = -1
+    if p0.y < p1.y: ystep = 1
+    else:           ystep = -1
 
-	for x in range( p0.x, p1.x+1):
-		if steep:
-			points.append( Vector2(y,x) )
-		else:
-			points.append( Vector2(x,y) )
+    for x in range( p0.x, p1.x+1):
+        if steep:
+            points.append( Vector2(y,x) )
+        else:
+            points.append( Vector2(x,y) )
 
-		error += derr
-		if error >= 0.5:
-			y += ystep
-			error -= 1.0
-	return points
+        error += derr
+        if error >= 0.5:
+            y += ystep
+            error -= 1.0
+    return points
 
 # Swap the x and y values of a Vector2
 func vswap(vec2):
-	return Vector2(vec2.y, vec2.x)
+    return Vector2(vec2.y, vec2.x)
 
 
 ##############################################################
@@ -106,40 +106,40 @@ func vswap(vec2):
 # fmult() - Floors to the nearest multiple
 #-------------------------------------------------------------
 func mult(num, mult):
-	if mult == 0: return num
-	var remainder = num % mult
-	if remainder == 0: return num
+    if mult == 0: return num
+    var remainder = num % mult
+    if remainder == 0: return num
 
-	var diff1 = num - fmult(num, mult)
-	var diff2 = cmult(num, mult) - num
+    var diff1 = num - fmult(num, mult)
+    var diff2 = cmult(num, mult) - num
 
-	if diff1 < diff2:	return num + mult - remainder
-	else:				return num + mult + remainder
+    if diff1 < diff2:   return num + mult - remainder
+    else:               return num + mult + remainder
 
 func cmult(num, mult):
-	if mult == 0: return num
-	var remainder = num % mult
-	if remainder == 0: return num	# remainder of 0 = num is multiple of mult, so return it (not needed in fmult)
-	return num + mult - remainder
+    if mult == 0: return num
+    var remainder = num % mult
+    if remainder == 0: return num   # remainder of 0 = num is multiple of mult, so return it (not needed in fmult)
+    return num + mult - remainder
 
 func fmult(num, mult):
-	if mult == 0: return num
-	var remainder = num % mult
-	return num - remainder
+    if mult == 0: return num
+    var remainder = num % mult
+    return num - remainder
 
 # nmult() should round to next multiple of mult with the option to
 # specify dir (ceil or floor) and of excluding mult
 # (to never allow rounding to itself if exc=true)
 func nmult(num, mult, dir = null, exc = true):
-	# problem:
-	#	ceil always excludes num by default
-	#	floor always includes num by default
-	#
-	# I don't yet know how to turn either of them around
-	#
-	# return num + mult - remainder		# this only works for ceil excluding num
-	# return num - mult + remainder		# this only works for floor including num
-	pass
+    # problem:
+    #   ceil always excludes num by default
+    #   floor always includes num by default
+    #
+    # I don't yet know how to turn either of them around
+    #
+    # return num + mult - remainder     # this only works for ceil excluding num
+    # return num - mult + remainder     # this only works for floor including num
+    pass
 
 
 ##############################################################
@@ -151,25 +151,25 @@ func nmult(num, mult, dir = null, exc = true):
 # ".png"), it lists only the files ending with that extension.
 #-------------------------------------------------------------
 func list_files(path, ext=""):
-	var files = []
-	var dir = Directory.new()
+    var files = []
+    var dir = Directory.new()
 
-	if ext != "" and not ext[0] == ".":
-		ext = "." + ext
+    if ext != "" and not ext[0] == ".":
+        ext = "." + ext
 
-	dir.open( path )
-	dir.list_dir_begin()
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif ext != "" and file.ends_with( ext ):
-			files.append( file )
-		elif file != "." and file != "..":
-			files.append( file )
+    dir.open( path )
+    dir.list_dir_begin()
+    while true:
+        var file = dir.get_next()
+        if file == "":
+            break
+        elif ext != "" and file.ends_with( ext ):
+            files.append( file )
+        elif file != "." and file != "..":
+            files.append( file )
 
-	dir.list_dir_end()
-	return files
+    dir.list_dir_end()
+    return files
 
 
 ##############################################################
@@ -179,12 +179,12 @@ func list_files(path, ext=""):
 # characters they are ignored).
 #-------------------------------------------------------------
 func ascii(char):
-	var asc = char[0].to_ascii()
-	return asc[0]
+    var asc = char[0].to_ascii()
+    return asc[0]
 
 ##############################################################
 # Converts a glyph's index to texture coordinates
 #-------------------------------------------------------------
 func tex_coords(index):
-	var TS = textures.get_tile_size()
-	return Rect2( Vector2( index % 16 * TS, int(index / 16) * TS ), Vector2(TS, TS) )
+    var TS = textures.get_tile_size()
+    return Rect2( Vector2( index % 16 * TS, int(index / 16) * TS ), Vector2(TS, TS) )
