@@ -59,11 +59,6 @@ func calc_fovmap(pos, vis_range):
 	var RIGHT	= clamp( pos.x+vis_range, 0, w )
 	var TOP		= clamp( pos.y-vis_range, 0, h )
 	var BOTTOM	= clamp( pos.y+vis_range, 0, h )
-	var visw = RIGHT - LEFT
-	var vish = BOTTOM - TOP
-	var dunw = w
-
-	print( "left: ", LEFT, "right: ", RIGHT, "R - L: ", RIGHT - LEFT )
 
 	fovmap = Array(clear_fovmap)
 
