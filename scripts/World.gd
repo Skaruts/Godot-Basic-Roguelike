@@ -20,11 +20,6 @@ func _fixed_process(delta):
 			dungeon.take_turn(player)
 			took_turn = true
 
-
-#func switch_texture():
-#	player.switch_texture()
-#	dungeon.switch_texture()
-
 func create_map():
 	dungeon = bspgen.new().generate( settings.DEBUG_SEED )
 	dungeon.set_name("dungeon")
