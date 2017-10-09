@@ -19,8 +19,10 @@ func _ready():
 	pass
 
 func set_position(p):
+	var TW = textures.get_tile_width()
+	var TH = textures.get_tile_height()
 	pos = p
-	set_pos(pos*textures.get_tile_size())
+	set_pos( Vector2(pos.x*TW, pos.y*TH) )
 
 func switch_texture():
 	get_node("Foreground").set_texture( textures.get_texture() )

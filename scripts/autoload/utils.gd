@@ -159,14 +159,14 @@ func list_files(path, ext=""):
 
 	dir.open( path )
 	dir.list_dir_begin()
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif ext != "" and file.ends_with( ext ):
-			files.append( file )
-		elif file != "." and file != "..":
-			files.append( file )
+	var file = dir.get_next()
+	while file != "":
+		if not dir.current_is_dir():
+			if ext != "" and file.ends_with( ext ):
+				files.append( file )
+			else:
+				files.append( file )
+		file = dir.get_next()
 
 	dir.list_dir_end()
 	return files

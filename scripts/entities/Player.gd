@@ -41,10 +41,10 @@ func _ready():
 	add_component("combat", combat)
 	callbacks.getf("set_hp").call_func(combat.hp, combat.max_hp)
 
-	var TS = textures.get_tile_size()
+	var TW = textures.get_tile_width()
 	if debug:
 		# label.set_text(str(hp))
-		label.set_pos( Vector2(0, -TS/2) )
+		label.set_pos( Vector2(0, -TW/2) )
 
 func die():
 	callbacks.getf("set_hp").call_func(0, 0)

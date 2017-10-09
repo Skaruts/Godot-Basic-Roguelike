@@ -32,13 +32,14 @@ func create_ui():
 	world = callbacks.call("get_world")
 
 func set_screen_size():
-	var TS = textures.get_tile_size()
+	var TW = textures.get_tile_width()
+	var TH = textures.get_tile_height()
 	var GW = settings.GRID_WIDTH
 	var GH = settings.GRID_HEIGHT
 	var screen_width =  OS.get_screen_size().x
 	var screen_height = OS.get_screen_size().y
-	var window_width = GW*TS
-	var window_height = GH*TS
+	var window_width = GW*TW
+	var window_height = GH*TH
 
 	# TODO: if window is maximized, let it stay maximized
 
@@ -61,13 +62,13 @@ func _input(event):
 	if event.is_action_pressed("k_room_info"):          world.toggle_debug_room_info()
 
 func switch_texture(dir):
-	textures.switch_texture(dir)
-	for t in get_tree().get_nodes_in_group("CELLS"):
-		t.switch_texture()
+	if textures.switch_texture(dir):
+		for t in get_tree().get_nodes_in_group("CELLS"):
+			t.switch_texture()
 
-	set_screen_size()
-	ui.reposition()
-	map_view.reposition()
+		set_screen_size()
+		ui.reposition()
+		map_view.reposition()
 
 func exit():
 	get_tree().quit()

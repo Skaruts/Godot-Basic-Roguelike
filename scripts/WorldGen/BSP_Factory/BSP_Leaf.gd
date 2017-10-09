@@ -134,10 +134,10 @@ func _process(delta):
 
 func _draw():
 	if debug:
-		draw_line( Vector2(x *TS,  y*TS),   Vector2(x2*TS,  y*TS), debug_color, 1 )
-		draw_line( Vector2(x2*TS,  y*TS),   Vector2(x2*TS, y2*TS), debug_color, 1 )
-		draw_line( Vector2(x2*TS, y2*TS),   Vector2( x*TS, y2*TS), debug_color, 1 )
-		draw_line( Vector2(x *TS, y2*TS),   Vector2( x*TS,  y*TS), debug_color, 1 )
+		draw_line( Vector2(x *TW,  y*TH),   Vector2(x2*TW,  y*TH), debug_color, 1 )
+		draw_line( Vector2(x2*TW,  y*TH),   Vector2(x2*TW, y2*TH), debug_color, 1 )
+		draw_line( Vector2(x2*TW, y2*TH),   Vector2( x*TW, y2*TH), debug_color, 1 )
+		draw_line( Vector2(x *TW, y2*TH),   Vector2( x*TW,  y*TH), debug_color, 1 )
 
 func set_debug(d):
 	debug = d

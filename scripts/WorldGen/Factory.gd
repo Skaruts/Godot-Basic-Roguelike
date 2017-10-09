@@ -7,7 +7,8 @@ extends Node2D
 #################################################################
 
 var SEED
-var TS      = textures.get_tile_size()
+var TW      = textures.get_tile_width()
+var TH      = textures.get_tile_height()
 
 # tile types
 # -------------------------

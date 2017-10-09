@@ -28,8 +28,8 @@ func _process(delta):
 
 func _draw():
 	if debug:
-		draw_line( Vector2((p1.x+0.5)*TS, (p1.y+0.5)*TS), Vector2((p2.x+0.5)*TS, (p2.y+0.5)*TS), debug_color, 1 )
-		draw_line( Vector2((p2.x+0.5)*TS, (p2.y+0.5)*TS), Vector2((p3.x+0.5)*TS, (p3.y+0.5)*TS), debug_color, 1 )
+		draw_line( Vector2((p1.x+0.5)*TW, (p1.y+0.5)*TH), Vector2((p2.x+0.5)*TW, (p2.y+0.5)*TH), debug_color, 1 )
+		draw_line( Vector2((p2.x+0.5)*TW, (p2.y+0.5)*TH), Vector2((p3.x+0.5)*TW, (p3.y+0.5)*TH), debug_color, 1 )
 
 func set_debug(d):
 	debug = d
