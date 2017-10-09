@@ -17,18 +17,18 @@ var HFLOOR_ID   = 2     # hallway floor
 var WALL_ID     = 3
 
 func set_seed(custom_seed = null):
-    if custom_seed != null:
-        # if a custom seed that is not null was provided, use it
-        SEED = custom_seed
-    else:
-        # if not, generate a new one randomly
-        randomize()
-        SEED = utils.irand(-200000000, 200000000)
+	if custom_seed != null:
+		# if a custom seed that is not null was provided, use it
+		SEED = custom_seed
+	else:
+		# if not, generate a new one randomly
+		randomize()
+		SEED = utils.irand(-200000000, 200000000)
 
-    # then use the new seed
-    seed(SEED)
-    print("-------------------------------------------------")
-    print("Factory.set_seed: | seed: ", SEED)
-    print("-------------------------------------------------")
-    print("\n\n")
+	# then use the new seed
+	seed(SEED)
+	print("-------------------------------------------------")
+	print("Factory.set_seed: | seed: ", SEED)
+	print("-------------------------------------------------")
+	print("\n\n")
 

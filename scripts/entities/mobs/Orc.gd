@@ -5,25 +5,25 @@ var pre_combat = preload("res://scripts/components/Combat.gd")
 # var pre_inventory = preload("res://scripts/components/MobInventory.gd")
 
 func _ready():
-    add_to_group("MAP_ENTITIES")
+	add_to_group("MAP_ENTITIES")
 
-    name = "Orc"
-    sight_range = 6
-    is_obstacle = true
+	name = "Orc"
+	sight_range = 6
+	is_obstacle = true
 
 
-    set_glyph( utils.ascii(charcodes.ORC) )
-    set_fg( colors.ORC )
+	set_glyph( utils.ascii(charcodes.ORC) )
+	set_fg( colors.ORC )
 
-    # components
-    ai = pre_ai.new()
-    add_component("ai", ai)
+	# components
+	ai = pre_ai.new()
+	add_component("ai", ai)
 
-    combat = pre_combat.new()
-    combat.hp = 10
-    combat.strength = 3
-    combat.defense = 0
-    add_component("combat", combat)
+	combat = pre_combat.new()
+	combat.hp = 10
+	combat.strength = 3
+	combat.defense = 0
+	add_component("combat", combat)
 
 
 

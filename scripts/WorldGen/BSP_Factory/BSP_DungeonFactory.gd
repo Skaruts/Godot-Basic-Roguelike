@@ -23,6 +23,6 @@ var MAX_ROOM_MONSTERS = 3
 # debug stuff
 var _room_id = -1
 func next_room_id():
-    _room_id += 1
-    return _room_id
+	_room_id += 1
+	return _room_id
 

@@ -10,40 +10,40 @@ var dungeon
 var took_turn = true
 
 func _ready():
-    create_map()
-    set_fixed_process(true)
+	create_map()
+	set_fixed_process(true)
 
 func _fixed_process(delta):
-    took_turn = false
-    if player.alive:
-        if player.controls.handle_keys(delta):
-            dungeon.take_turn(player)
-            took_turn = true
+	took_turn = false
+	if player.alive:
+		if player.controls.handle_keys(delta):
+			dungeon.take_turn(player)
+			took_turn = true
 
 func create_map():
-    dungeon = bspgen.new().generate( settings.DEBUG_SEED )
-    dungeon.set_name("dungeon")
-    add_child(dungeon)
-    dungeon.set_owner(self)
+	dungeon = bspgen.new().generate( settings.DEBUG_SEED )
+	dungeon.set_name("dungeon")
+	add_child(dungeon)
+	dungeon.set_owner(self)
 
-    create_player()
+	create_player()
 
-    dungeon.calc_fovmap(player.pos, player.sight_range)
-    dungeon.calc_mobs_vis()
+	dungeon.calc_fovmap(player.pos, player.sight_range)
+	dungeon.calc_mobs_vis()
 
 func create_player():
-    if player != null: player.free()
-    player = pre_player.instance()
-    player.init(dungeon.player_starting_pos, utils.ascii(charcodes.PLAYER))
-    player.set_dungeon(dungeon)
-    add_child(player)
-    player.set_owner(self)
+	if player != null: player.free()
+	player = pre_player.instance()
+	player.init(dungeon.player_starting_pos, utils.ascii(charcodes.PLAYER))
+	player.set_dungeon(dungeon)
+	add_child(player)
+	player.set_owner(self)
 
 func rebuild_map():
-    var d = get_node("dungeon")
-    remove_child(d)
-    d.free()
-    create_map()
+	var d = get_node("dungeon")
+	remove_child(d)
+	d.free()
+	create_map()
 
 
 
@@ -53,48 +53,48 @@ func rebuild_map():
 # debug stuff
 # ----------------------------------
 func toggle_debug_hp():
-    settings.SHOW_MOB_HP = not settings.SHOW_MOB_HP
-    if settings.DEBUG:
-        player.toggle_debug()
-        for m in dungeon.mobs:      m.toggle_debug()
+	settings.SHOW_MOB_HP = not settings.SHOW_MOB_HP
+	if settings.DEBUG:
+		player.toggle_debug()
+		for m in dungeon.mobs:      m.toggle_debug()
 
 func toggle_debug_leaves():
-    settings.DEBUG_LEAF = not settings.DEBUG_LEAF
-    if settings.DEBUG:
-        for l in dungeon.leaves:    l.toggle_debug()
+	settings.DEBUG_LEAF = not settings.DEBUG_LEAF
+	if settings.DEBUG:
+		for l in dungeon.leaves:    l.toggle_debug()
 
 func toggle_debug_rooms():
-    settings.DEBUG_ROOM = not settings.DEBUG_ROOM
-    if settings.DEBUG:
-        for r in dungeon.rooms:     r.toggle_debug()
+	settings.DEBUG_ROOM = not settings.DEBUG_ROOM
+	if settings.DEBUG:
+		for r in dungeon.rooms:     r.toggle_debug()
 
 func toggle_debug_halls():
-    settings.DEBUG_HALL = not settings.DEBUG_HALL
-    if settings.DEBUG:
-        for h in dungeon.halls:     h.toggle_debug()
+	settings.DEBUG_HALL = not settings.DEBUG_HALL
+	if settings.DEBUG:
+		for h in dungeon.halls:     h.toggle_debug()
 
 func toggle_debug_room_info():
-    settings.SHOW_ROOM_LABELS = not settings.SHOW_ROOM_LABELS
-    if settings.DEBUG:
-        for r in dungeon.rooms:     r.toggle_info()
+	settings.SHOW_ROOM_LABELS = not settings.SHOW_ROOM_LABELS
+	if settings.DEBUG:
+		for r in dungeon.rooms:     r.toggle_info()
 
 func toggle_debug():
-    settings.DEBUG = not settings.DEBUG
+	settings.DEBUG = not settings.DEBUG
 
-    if settings.DEBUG:
-        player.set_debug(settings.SHOW_MOB_HP)
-        for m in dungeon.mobs:      m.set_debug(settings.SHOW_MOB_HP)
-        for l in dungeon.leaves:    l.set_debug(settings.DEBUG_LEAF)
-        for r in dungeon.rooms:     r.set_debug(settings.DEBUG_ROOM)
-        for h in dungeon.halls:     h.set_debug(settings.DEBUG_HALL)
-        for r in dungeon.rooms:     r.show_info(settings.SHOW_ROOM_LABELS)
-    else:
-        player.set_debug(false)
-        for m in dungeon.mobs:      m.set_debug(false)
-        for l in dungeon.leaves:    l.set_debug(false)
-        for r in dungeon.rooms:     r.set_debug(false)
-        for h in dungeon.halls:     h.set_debug(false)
-        for r in dungeon.rooms:     r.show_info(false)
+	if settings.DEBUG:
+		player.set_debug(settings.SHOW_MOB_HP)
+		for m in dungeon.mobs:      m.set_debug(settings.SHOW_MOB_HP)
+		for l in dungeon.leaves:    l.set_debug(settings.DEBUG_LEAF)
+		for r in dungeon.rooms:     r.set_debug(settings.DEBUG_ROOM)
+		for h in dungeon.halls:     h.set_debug(settings.DEBUG_HALL)
+		for r in dungeon.rooms:     r.show_info(settings.SHOW_ROOM_LABELS)
+	else:
+		player.set_debug(false)
+		for m in dungeon.mobs:      m.set_debug(false)
+		for l in dungeon.leaves:    l.set_debug(false)
+		for r in dungeon.rooms:     r.set_debug(false)
+		for h in dungeon.halls:     h.set_debug(false)
+		for r in dungeon.rooms:     r.show_info(false)
 
 
 
