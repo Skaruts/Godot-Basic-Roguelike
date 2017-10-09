@@ -3,3 +3,4 @@ export.cfg
 *.old2
 *.bak
 scripts/GDScript_Tests.gd
+*.TMP
