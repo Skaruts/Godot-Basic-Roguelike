@@ -46,6 +46,7 @@ func handle_keys(delta):
     if k_shake:
         parent.get_node("Camera").shake(0.4, 16)
 
+    if took_turn: parent.take_turn()
     return took_turn
 
 func move_once():

@@ -1,7 +1,7 @@
 extends Node
 
-var pre_tile = preload("res://scripts/Tile.gd")
-var pre_cell = preload("res://scripts/Cell.gd")
+var pre_tile = preload("res://scenes/Tile.tscn")
+var pre_cell = preload("res://scenes/Cell.tscn")
 var charmap = Array()
 var clear_charmap = Array()
 var mw = 0
@@ -133,14 +133,14 @@ func make_tiles(parent, fg, bg, is_cell=false):
 
 func _create_tile(x, y, char, parent, fg, bg, is_cell ):
 	var tile
-	if is_cell: tile = pre_cell.new()
-	else:       tile = pre_tile.new()
-	tile.init( Vector2(x, y), char )
-
-	tile.set_fg( fg )
-	tile.set_bg( bg )
+	if is_cell: tile = pre_cell.instance()
+	else:       tile = pre_tile.instance()
 	parent.add_child( tile )
 	tile.set_owner( parent )
+
+	tile.init( Vector2(x, y), char )
+	tile.set_fg( fg )
+	tile.set_bg( bg )
 
 	return tile
 

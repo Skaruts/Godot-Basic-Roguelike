@@ -2,9 +2,9 @@ extends "res://scripts/ui/UI_Widget.gd"
 
 var frame = []
 
-func init(world, w=1, h=1):
+func init(w=1, h=1):
     # set_position(pos)
-    set_size(w, h)
+	set_size(w, h)
 
 func build_frame():
     var tile_fac = load("res://scripts/TileFactory.gd").new(w, h)

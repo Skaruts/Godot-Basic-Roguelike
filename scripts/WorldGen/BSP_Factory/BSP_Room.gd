@@ -24,6 +24,7 @@ var debug_color = Color(1, 1, 1, 0.5)
 # var show_label = false
 
 func _ready():
+    set_z(100)
     if settings.DEBUG:
         set_debug( settings.DEBUG_ROOM )
 

@@ -2,8 +2,8 @@
 extends Node2D
 
 var bspgen = preload("res://scripts/WorldGen/BSP_Factory/BSP_DungeonGenerator.gd")
-var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
-# var pre_player = preload("res://scenes/entities/Player.tscn")
+# var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
+var pre_player = preload("res://scenes/entities/Player.tscn")
 
 var player = null
 var dungeon
@@ -31,13 +31,11 @@ func create_map():
     dungeon.calc_fovmap(player.pos, player.sight_range)
     dungeon.calc_mobs_vis()
 
-
 func create_player():
     if player != null: player.free()
-    var mob_fac = pre_mobfactory.new()
-
-    player = mob_fac.create_mob(dungeon.player_starting_pos, 'player', dungeon)
-    player.is_player = true
+    player = pre_player.instance()
+    player.init(dungeon.player_starting_pos, utils.ascii(charcodes.PLAYER))
+    player.set_dungeon(dungeon)
     add_child(player)
     player.set_owner(self)
 

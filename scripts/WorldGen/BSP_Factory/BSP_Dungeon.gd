@@ -4,7 +4,7 @@ var show_all_tiles = false  # show all the tiles for testing purposes
 var use_bresenham = false   # use Bresenham or RedBlobGames line algorithm
 
 var pre_corpse = preload("res://scenes/entities/Corpse.tscn")
-var pre_tile = preload("res://scripts/Tile.gd")
+var pre_tile = preload("res://scenes/Tile.tscn")
 
 var tilemap = []    # array of Tile objects
 var fovmap  = Array()       # field of view map - array of bytes (RawArray)
@@ -31,17 +31,14 @@ func build_map( map ):
         for i in range(w):
             var tile
             if map[i+j*w] in [RFLOOR_ID, HFLOOR_ID]:
-                tile = pre_tile.new()
+                tile = pre_tile.instance()
                 tile.init( Vector2(i, j), utils.ascii(charcodes.FLOOR) )
                 tile.set_fg( colors.STONE_FLOOR )
             elif map[i+j*w] == WALL_ID:
-                tile = pre_tile.new()
+                tile = pre_tile.instance()
                 tile.init( Vector2(i, j), utils.ascii(charcodes.WALL) )
                 tile.set_fg( colors.STONE_WALL )
                 tile.is_solid = true
-
-
-
 
             # TODO: make doors
 
@@ -146,14 +143,14 @@ func kill_entity(ent, type):
 
 func add_corpse(cname, pos):
     var corpse = pre_corpse.instance()
+    add_child(corpse)
+    corpse.set_owner(self)
+
     corpse.init(pos, utils.ascii(charcodes.CORPSE))
     corpse.name = cname
-
     corpse.set_dungeon(self)
     corpses.append(corpse)
 
-    add_child(corpse)
-    corpse.set_owner(self)
 
 func clear_map():
     for t in tilemap:

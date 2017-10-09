@@ -10,8 +10,7 @@ func _ready():
     sight_range = 3
     is_obstacle = true
 
-    glyph = utils.ascii(charcodes.TROLL)
-    set_glyph( glyph )
+    set_glyph( utils.ascii(charcodes.TROLL) )
     set_fg( colors.TROLL )
 
     # Components

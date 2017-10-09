@@ -124,6 +124,7 @@ var debug = false
 var debug_color = Color(0, 0.7, 1, 0.3)
 
 func _ready():
+    set_z(100)
     if settings.DEBUG:
         set_debug( settings.DEBUG_LEAF )
 

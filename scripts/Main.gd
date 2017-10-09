@@ -1,12 +1,11 @@
 extends Node2D
 
-var pre_ui = preload("res://scripts/UI.gd")
+#var pre_ui = preload("res://scenes/UI.tscn")
+#var pre_mapview = preload("res://scenes/MapView.tscn")
 
 var world
 var map_view
 var ui
-
-# var ui_frame
 
 func _ready():
 	# just a file where I can test little things
@@ -18,16 +17,19 @@ func _ready():
 	set_process_input(true)
 
 func create_ui():
-	world = get_tree().get_root().get_node("main/Map View/Viewport/World")
-	ui = pre_ui.new()
-	ui.init(world)
-	add_child(ui)
+	ui = get_node("UI")
+	map_view = get_node("MapView")
 
-	map_view = get_node("Map View")
-	map_view.set_size(34, 34)
-	if settings.INVERT_UI == 0:     map_view.set_position( Vector2(12, 0) )
-	else:                           map_view.set_position( Vector2(18, 0) )
-	map_view.set_size(34, 34)
+#	ui = pre_ui.instance()
+#	map_view = pre_mapview.instance()
+
+#	add_child(ui)
+#	add_child(map_view)
+
+	ui.reposition()
+	map_view.reposition()
+
+	world = callbacks.call("get_world")
 
 func set_screen_size():
 	var TS = textures.get_tile_size()
@@ -65,11 +67,7 @@ func switch_texture(dir):
 
 	set_screen_size()
 	ui.reposition()
-
-	if settings.INVERT_UI == 0:     map_view.set_position( Vector2(12, 0) )
-	else:                           map_view.set_position( Vector2(18, 0) )
-	map_view.set_size(34, 34)
-
+	map_view.reposition()
 
 func exit():
 	get_tree().quit()

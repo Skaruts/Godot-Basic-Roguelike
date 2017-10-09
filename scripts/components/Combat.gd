@@ -23,9 +23,11 @@ func attack(target):
 		callbacks.call("log_line", parent.name + ' attacks ' + target.name + ' but does no damage.')
 
 func take_damage(damage):
+
 	if damage > 0:
 		hp = clamp(hp - damage, 0, hp)
 		parent.set_label_text( str(hp) )
 
 		if hp <= 0:
 			parent.die( )
+

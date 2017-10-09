@@ -9,11 +9,11 @@ var DEBUG_LEAF = false
 var DEBUG_HALL = false
 var DEBUG_ROOM = false
 var SHOW_ROOM_LABELS = false
-var SHOW_MOB_HP = true
+var SHOW_MOB_HP = false
 
 # master flag, overrides all of the above, although they
 # can still be set to true in each class, overriding this
-var DEBUG = true
+var DEBUG = false
 
 # settings
 # ------------------------------------------------------------

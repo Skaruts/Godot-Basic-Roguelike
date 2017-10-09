@@ -12,9 +12,6 @@ var is_obstacle = true
 var name
 var dungeon
 
-# func _init(pos, g):
-#   ._init(pos, g)
-
 func _ready():
     # ._ready()
     add_to_group("TEXTURED")

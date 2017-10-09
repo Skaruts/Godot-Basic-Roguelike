@@ -2,46 +2,33 @@ extends "res://scripts/ui/UI_Widget.gd"
 
 var pre_tilefactory = preload("res://scripts/TileFactory.gd")
 var tilemap = []
+var glyph
 
-var name
-var value
-var max_value
+func _init(pos, w):
+	set_position(pos)
+	set_size(w, 1)
 
+func build_bar():
+	var tile_fac = pre_tilefactory.new(w, h)
 
-# var max_width
-var length;
+	tile_fac.frect(glyph)
+	tilemap = tile_fac.make_tiles(self, fg, bg, true)
 
-func _init(name, pos, w, fg, bg=null):
-    self.name = name
+func set_val(val, max_val):
+	var length = int(float(val) / max_val * w)
+	# var remainder = float(val) / max_val * w - length
+	# print (length)
+	# tilemap[length].set_modulate( Color(fg.r, fg.g, fg.b, fg.a*remainder) )
 
-    set_position(pos)
-    set_size(w, 1)
+	for i in range( tilemap.size() ):
+		if i > length:
+			tilemap[i].set_fg(bg)
+		elif i == length:
+			# find the difference between one point and the other
+			# and change color alpha based on that
+			var remainder = float(val) / max_val * w - length
+			tilemap[i].set_fg( Color(fg.r, fg.g, fg.b, fg.a*remainder) )
+			pass
+		else:
+			tilemap[i].set_fg(fg)
 
-    set_foreground(fg)
-    set_background(bg)
-
-    # background
-    var tile_fac = pre_tilefactory.new(w, h)
-    print("pos: ", pos)
-    print("w, h: ", w, ", ", h)
-    # tile_fac.frect(219)
-    # tilemap_bg = tile_fac.make_tiles(self)
-    # tile_fac.clear()
-
-    # foreground
-    if w > 0:
-        tile_fac.frect(219)
-        tilemap = tile_fac.make_tiles(self, colors.GREEN4, colors.BLACK, true)
-
-
-func set_value(value=100, max_value=100):
-    length = int( value / max_value * w )
-    var remainder = (value / max_value * w) - w
-
-    # for t in tilemap:
-
-func set_foreground(foreground):
-    pass
-
-func set_background(background):
-    pass

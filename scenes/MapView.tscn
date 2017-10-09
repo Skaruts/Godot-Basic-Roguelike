@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scripts/UI_MapView.gd" type="Script" id=1]
+[ext_resource path="res://scripts/World.gd" type="Script" id=2]
+
+[node name="MapView" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ViewportSprite" type="ViewportSprite" parent="."]
+
+viewport = NodePath("../Viewport")
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Viewport" type="Viewport" parent="."]
+
+rect = Rect2( 0, 0, 80, 50 )
+own_world = false
+world = null
+transparent_bg = false
+render_target/enabled = true
+render_target/v_flip = false
+render_target/clear_on_new_frame = true
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 2
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
+
+[node name="World" type="Node2D" parent="Viewport"]
+
+script/script = ExtResource( 2 )
+
+

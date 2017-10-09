@@ -11,8 +11,8 @@ func _ready():
     sight_range = 6
     is_obstacle = true
 
-    glyph = utils.ascii(charcodes.ORC)
-    set_glyph( glyph )
+
+    set_glyph( utils.ascii(charcodes.ORC) )
     set_fg( colors.ORC )
 
     # components
