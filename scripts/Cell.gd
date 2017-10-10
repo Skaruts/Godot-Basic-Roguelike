@@ -1,4 +1,4 @@
-extends Node2D
+extends Sprite
 
 var pos = Vector2()
 var glyph = 0
