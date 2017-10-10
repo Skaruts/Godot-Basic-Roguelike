@@ -57,6 +57,7 @@ func die():
 	dungeon.add_corpse(name, pos)
 	set_glyph(0)
 	set_bg(colors.TRANSP)
+	set_visible(false)
 	# dungeon.kill_entity(self, 'mob')
 
 func set_label_text(text):

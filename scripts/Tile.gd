@@ -9,7 +9,7 @@ func set_fg(fg):
 	self.fg = fg
 	var mult = settings.TILE_DARK_MULT
 	fg_dark = Color(fg.r*mult, fg.g*mult, fg.b*mult)
-	fore.set_modulate(fg)
+	set_modulate(fg)
 
 
 func set_visible(show):
@@ -24,9 +24,9 @@ func set_visible(show):
 
 func set_dark(dark):
 	if dark and not darkened:
-		fore.set_modulate( fg_dark )
+		set_modulate( fg_dark )
 		darkened = true
 	elif not dark and darkened:
-		fore.set_modulate( fg )
+		set_modulate( fg )
 		darkened = false
 

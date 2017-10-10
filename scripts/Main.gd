@@ -61,7 +61,7 @@ func _input(event):
 
 func switch_texture(dir):
 	if textures.switch_texture(dir):
-		get_tree().call_group(0, "CELLS", "switch_texture")
+		get_tree().call_group(2, "CELLS", "switch_texture")
 		ui.reposition()
 		map_view.reposition()
 		set_screen_size()
