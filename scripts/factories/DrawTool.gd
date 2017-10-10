@@ -1,11 +1,14 @@
 extends Node
-
-var pre_tile = preload("res://scenes/Tile.tscn")
-var pre_cell = preload("res://scenes/Cell.tscn")
+var pre_tilefactory = preload("res://scripts/factories/TileFactory.gd")
 var charmap = Array()
 var clear_charmap = Array()
 var mw = 0
 var mh = 0
+
+# move this into text factory
+func write(string):
+	for i in range(string.length()):
+		charmap[i] = utils.ascii(string[i])
 
 func _init(w=1, h=1):
 	mw = w
@@ -20,6 +23,13 @@ func create_charmap():
 func clear():
 	charmap = Array(clear_charmap)
 
+func get_finished(parent, fg, bg, is_cell=false):
+	var fac = pre_tilefactory.new()
+	return fac.make_tiles(charmap, mw, mh, parent, fg, bg, is_cell)
+
+
+func plot(char, x, y):
+	charmap[x+y*mw] = char
 
 #######################################################
 # Draws a line to the charmap.
@@ -122,30 +132,4 @@ func frect(char, x=0, y=0, w=0, h=0):   # add support alpha value
 	for j in range(y, y2):
 		for i in range(x, x2):
 			charmap[i+j*mw] = char
-
-func make_tiles(parent, fg, bg, is_cell=false):
-	var tilemap = []
-	for j in range(mh):
-		for i in range(mw):
-			if charmap[i+j*mw] > 0:
-				tilemap.append( _create_tile( i, j, charmap[i+j*mw], parent, fg, bg, is_cell ) )
-	return tilemap
-
-func _create_tile(x, y, char, parent, fg, bg, is_cell ):
-	var tile
-	if is_cell: tile = pre_cell.instance()
-	else:       tile = pre_tile.instance()
-	parent.add_child( tile )
-	tile.set_owner( parent )
-
-	tile.init( Vector2(x, y), char )
-	tile.set_fg( fg )
-	tile.set_bg( bg )
-
-	return tile
-
-func write(string):
-	for i in range(string.length()):
-		charmap[i] = utils.ascii(string[i])
-
 

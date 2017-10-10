@@ -1,6 +1,6 @@
 extends "res://scripts/ui/UI_Widget.gd"
 
-var pre_tilefactory = preload("res://scripts/TileFactory.gd")
+#var pre_tilefactory = preload("res://scripts/factories/DrawTool.gd")
 var tilemap = []
 var glyph
 
@@ -9,10 +9,10 @@ func _init(pos, w):
 	set_size(w, 1)
 
 func build_bar():
-	var tile_fac = pre_tilefactory.new(w, h)
-
-	tile_fac.frect(glyph)
-	tilemap = tile_fac.make_tiles(self, fg, bg, true)
+	var dt = load("res://scripts/factories/DrawTool.gd").new(w, h)
+	#var dt = pre_tilefactory.new(w, h)
+	dt.frect(glyph)
+	tilemap = dt.get_finished(self, fg, bg, true)
 
 func set_val(val, max_val):
 	var length = int(float(val) / max_val * w)

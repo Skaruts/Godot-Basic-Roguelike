@@ -154,11 +154,12 @@ func list_files(path, ext=""):
 	var files = []
 	var dir = Directory.new()
 
-	if ext != "" and not ext[0] == ".":
+	if ext != "" and ext[0] != ".":
 		ext = "." + ext
 
 	dir.open( path )
 	dir.list_dir_begin()
+
 	var file = dir.get_next()
 	while file != "":
 		if not dir.current_is_dir():
@@ -187,7 +188,8 @@ func ascii(char):
 # Converts a glyph's index to texture coordinates
 #-------------------------------------------------------------
 func tex_coords(index):
-	var TS = textures.get_tile_size()
-	return Rect2( Vector2( index % 16 * TS, int(index / 16) * TS ), Vector2(TS, TS) )
+	var TW = textures.get_tile_width()
+	var TH = textures.get_tile_height()
+	return Rect2( Vector2( index % 16 * TW, int(index / 16) * TW ), Vector2(TW, TH) )
 
 

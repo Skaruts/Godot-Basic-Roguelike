@@ -6,7 +6,7 @@ var texts = []
 var labels = []
 var max_lines
 func _ready():
-	callbacks.add(self, "log_line")
+	global.addf(self, "log_line")
 	max_lines = h-2
 
 func log_line(line):
@@ -14,7 +14,7 @@ func log_line(line):
 
 	var l = pre_label.new()
 	labels.append(l)
-	l.init(Vector2(1, labels.size()), line)
+	l.init(Vector2(1, labels.size()), line, colors.GRAY3, colors.BLACK) 
 	add_child(l)
 
 	if labels.size() > max_lines:

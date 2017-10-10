@@ -4,7 +4,7 @@ func _init(pos, w).(pos, w):
 	pass
 
 func _ready():
-	callbacks.add(self, "set_hp")
+	global.addf(self, "set_hp")
 	glyph = 219
 
 	set_fg(colors.RED3)

@@ -7,7 +7,7 @@
 # http://www.emanueleferonato.com/2009/06/02/understanding-roguelike-dungeons/
 #######################################################################
 
-extends "res://scripts/WorldGen/Factory.gd"
+extends "res://scripts/WorldGen/GenBase.gd"
 
 var MW = settings.MAP_WIDTH
 var MH = settings.MAP_HEIGHT

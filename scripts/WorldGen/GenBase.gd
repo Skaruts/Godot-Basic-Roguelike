@@ -1,9 +1,9 @@
 extends Node2D
 
 #################################################################
-# Other factory classes inherit from this one, so that they
+# World Gen factory classes inherit from this one, so that they
 # can access these variables directly, instead of having
-# to use fully qualified names such as "Factory.SEED".
+# to use fully qualified names such as "GenBase.SEED".
 #################################################################
 
 var SEED

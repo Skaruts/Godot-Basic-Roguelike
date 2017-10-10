@@ -21,6 +21,9 @@ var h
 var player_starting_pos
 
 func _init(w, h):
+	global.dungeon = self
+	global.nodes["current_dungeon"] = self
+
 	self.w = w
 	self.h = h
 

@@ -17,8 +17,9 @@ var alive = true
 var sight_range
 
 func _ready():
+	global.nodes["player"] = self
+	global.player = self
 
-	add_to_group("PLAYER")
 	label = get_node("Label")
 	set_debug( settings.SHOW_MOB_HP )
 
@@ -36,10 +37,12 @@ func _ready():
 	combat = pre_combat.new()
 	combat.hp = 100
 	combat.max_hp = 100
+	combat.mana = 100
+	combat.max_mana = 100
 	combat.strength = 5
 	combat.defense = 2
 	add_component("combat", combat)
-	callbacks.getf("set_hp").call_func(combat.hp, combat.max_hp)
+	#global.getf("set_hp").call_func(combat.hp, combat.max_hp)
 
 	var TW = textures.get_tile_width()
 	if debug:
@@ -47,7 +50,7 @@ func _ready():
 		label.set_pos( Vector2(0, -TW/2) )
 
 func die():
-	callbacks.getf("set_hp").call_func(0, 0)
+	#global.getf("set_hp").call_func(0, 0)
 	is_obstacle = false
 	alive = false
 
@@ -72,5 +75,5 @@ func toggle_debug():
 	label.set_hidden( not label.is_hidden() )
 
 func take_turn():
-	callbacks.getf("set_hp").call_func(combat.hp, combat.max_hp)
-
+	#global.getf("set_hp").call_func(combat.hp, combat.max_hp)
+	pass

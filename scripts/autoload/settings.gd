@@ -26,5 +26,5 @@ var KEY_REPEAT          = true      # if false, you move once per key press
 var KEY_COOLDOWN        = 0.10
 var KEY_1ST_COOLDOWN    = 0.250
 var INVERT_UI           = false
-
+var KERNING				= 4
 # func _init():

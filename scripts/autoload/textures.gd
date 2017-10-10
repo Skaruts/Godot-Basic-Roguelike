@@ -1,7 +1,7 @@
 # AutoLoaded script
 extends Node
 
-var _currTexIndex = 0
+var _currTexIndex = 3
 var _currTexture
 var _textures = []  # store preloaded textures
 

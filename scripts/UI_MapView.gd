@@ -1,8 +1,5 @@
 extends Node2D	# "res://scripts/ui/UI_Widget.gd"
 
-func _ready():
-	callbacks.add(self, "get_world")
-
 func set_size(w, h):
 	# self.w = w
 	# self.h = h
@@ -20,9 +17,3 @@ func reposition():
 
 	set_size(34, 34)
 
-func get_world():
-	var v = get_node("Viewport")
-	#print("V: ", v.get_name())
-	var world = v.get_node("World")
-	#print("W: ", world.get_name())
-	return world

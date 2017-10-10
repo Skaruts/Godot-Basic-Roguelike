@@ -7,10 +7,10 @@ func init(w=1, h=1):
 	set_size(w, h)
 
 func build_frame():
-	var tile_fac = load("res://scripts/TileFactory.gd").new(w, h)
+	var dt = load("res://scripts/factories/DrawTool.gd").new(w, h)
 	# var TS = textures.get_tile_size()
-	tile_fac.rect()
-	frame = tile_fac.make_tiles(self, colors.UI_FG, colors.UI_BG, true)
+	dt.rect()
+	frame = dt.get_finished(self, colors.UI_FG, colors.UI_BG, true)
 
 func set_size(w, h):
 	.set_size(w, h)

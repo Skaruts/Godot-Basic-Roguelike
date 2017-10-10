@@ -8,9 +8,9 @@ var map_view
 var ui
 
 func _ready():
-	# just a file where I can test little things
-	#var test = load("res://scripts/GDScript_Tests.gd").new()
-	#add_child( test )
+	# just a file where I can test little things and print stuff in one place
+#	var test = load("res://scripts/GDScript_Tests.gd").new()
+#	add_child( test )
 
 	set_screen_size()
 	create_ui()
@@ -29,7 +29,7 @@ func create_ui():
 	ui.reposition()
 	map_view.reposition()
 
-	world = callbacks.call("get_world")
+	world = global.world
 
 func set_screen_size():
 	var TW = textures.get_tile_width()
@@ -41,11 +41,9 @@ func set_screen_size():
 	var window_width = GW*TW
 	var window_height = GH*TH
 
-	# TODO: if window is maximized, let it stay maximized
-
 	OS.set_window_size( Vector2(window_width, window_height) )
 	OS.set_window_position( Vector2( screen_width/2 - window_width/2, screen_height/2 - window_height/2 ) )
-	# print("WS: ", OS.get_window_size(), "  |  TS: ", TS, "  |  SS: ", OS.get_screen_size())
+#	print("WS: ", OS.get_window_size(), "  |  TW, TH: ", TW, ", ", TH, "  |  SS: ", OS.get_screen_size())
 
 func _input(event):
 	if event.is_action_pressed("k_quit"):               exit()
@@ -63,12 +61,10 @@ func _input(event):
 
 func switch_texture(dir):
 	if textures.switch_texture(dir):
-		for t in get_tree().get_nodes_in_group("CELLS"):
-			t.switch_texture()
-
-		set_screen_size()
+		get_tree().call_group(0, "CELLS", "switch_texture")
 		ui.reposition()
 		map_view.reposition()
+		set_screen_size()
 
 func exit():
 	get_tree().quit()

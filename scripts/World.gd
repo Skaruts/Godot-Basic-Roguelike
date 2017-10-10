@@ -6,19 +6,21 @@ var bspgen = preload("res://scripts/WorldGen/BSP_Factory/BSP_DungeonGenerator.gd
 var pre_player = preload("res://scenes/entities/Player.tscn")
 
 var player = null
-var dungeon
-var took_turn = true
+var dungeon = null
 
 func _ready():
+	global.world = self
+	global.nodes["world"] = self
+
 	create_map()
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	took_turn = false
+	global.took_turn = false
 	if player.alive:
 		if player.controls.handle_keys(delta):
 			dungeon.take_turn(player)
-			took_turn = true
+			global.took_turn = true
 
 func create_map():
 	dungeon = bspgen.new().generate( settings.DEBUG_SEED )

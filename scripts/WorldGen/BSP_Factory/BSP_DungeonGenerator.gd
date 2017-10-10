@@ -2,7 +2,7 @@ extends "res://scripts/WorldGen/BSP_Factory/BSP_DungeonFactory.gd"
 
 #var premob = preload("res://scenes/entities/Mob.tscn")
 
-var pre_mobfactory = preload("res://scripts/WorldGen/MobFactory.gd")
+var pre_mobfactory = preload("res://scripts/factories/MobFactory.gd")
 var pre_bsp_dungeon = preload("res://scripts/WorldGen/BSP_Factory/BSP_Dungeon.gd")
 var pre_leaf = preload("res://scripts/WorldGen/BSP_Factory/BSP_Leaf.gd")
 

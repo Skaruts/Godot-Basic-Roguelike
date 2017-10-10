@@ -4,11 +4,13 @@
 #######################################################################
 extends Node
 
-var hp
-var max_hp
-var strength
-var defense
-var parent
+var hp        = 100
+var mana      = 100
+var max_mana  = 100
+var max_hp    = 100
+var strength  = 0
+var defense   = 0
+var parent    = null
 
 func _ready():
 	parent = get_parent()
@@ -17,10 +19,10 @@ func _ready():
 func attack(target):
 	var damage = strength - target.combat.defense
 	if damage > 0:
-		callbacks.call("log_line", parent.name + ' attacks ' + target.name + ' for ' + str(damage) + ' HP.')
+		global.callf("log_line", parent.name + ' attacks ' + target.name + ' for ' + str(damage) + ' HP')
 		target.combat.take_damage(damage)
 	else:
-		callbacks.call("log_line", parent.name + ' attacks ' + target.name + ' but does no damage.')
+		global.callf("log_line", parent.name + ' attacks ' + target.name + ' but does no damage')
 
 func take_damage(damage):
 
