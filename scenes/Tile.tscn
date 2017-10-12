@@ -9,4 +9,19 @@ vframes = 16
 hframes = 16
 script/script = ExtResource( 1 )
 
+[node name="Background" type="Polygon2D" parent="."]
+
+visibility/behind_parent = true
+polygon = Vector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
 

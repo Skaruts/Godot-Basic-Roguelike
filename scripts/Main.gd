@@ -61,6 +61,7 @@ func _input(event):
 
 func switch_texture(dir):
 	if textures.switch_texture(dir):
+		# 0 default | 1 reverse | 2 real Time | 4 unique
 		get_tree().call_group(2, "CELLS", "switch_texture")
 		ui.reposition()
 		map_view.reposition()

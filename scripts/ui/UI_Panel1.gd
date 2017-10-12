@@ -32,8 +32,8 @@ func _ready():
 
 	hp_label   = pre_label.new()
 	mana_label = pre_label.new()
-	hp_label.init(   Vector2(1, 10), "HP", colors.GRAY4, colors.BLACK   )
-	mana_label.init( Vector2(1, 12), "Mana", colors.GRAY4, colors.BLACK )
+	hp_label.init(   Vector2(1, 9), "HP", colors.GRAY4, colors.BLACK   )
+	mana_label.init( Vector2(1, 11), "Mana", colors.GRAY4, colors.BLACK )
 	health_bar = load("res://scripts/ui/UI_HealthBar.gd").new( Vector2(1, 10), BAR_WIDTH )
 	mana_bar   = load("res://scripts/ui/UI_ManaBar.gd").new(   Vector2(1, 12), BAR_WIDTH )
 	add_child( health_bar )

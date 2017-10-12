@@ -16,7 +16,7 @@ func _ready():
 	# ._ready()
 	add_to_group("TEXTURED")
 	add_to_group("ENTITIES")
-	switch_texture()
+#	switch_texture()
 
 # sets the map this entity is currently in
 func set_dungeon(d):
