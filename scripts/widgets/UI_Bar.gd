@@ -1,4 +1,4 @@
-extends "res://scripts/ui/UI_Widget.gd"
+extends "res://scripts/widgets/UI_Widget.gd"
 
 #var pre_tilefactory = preload("res://scripts/factories/DrawTool.gd")
 var tilemap = []
@@ -10,9 +10,10 @@ func _init(pos, w):
 
 func build_bar():
 	var dt = load("res://scripts/factories/DrawTool.gd").new(w, h)
+	dt.set_colors(fg, bg)
 	#var dt = pre_tilefactory.new(w, h)
 	dt.frect(glyph)
-	tilemap = dt.get_finished(self, fg, bg, true)
+	tilemap = dt.get_finished(self)
 
 func set_val(val, max_val):
 	var length = int(float(val) / max_val * w)

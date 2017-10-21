@@ -1,4 +1,6 @@
-extends "res://scripts/ui/UI_Bar.gd"
+extends "res://scripts/widgets/UI_Bar.gd"
+
+# THIS CLASS SEEMS REDUNDANT
 
 func _init(pos, w).(pos, w):
 	pass

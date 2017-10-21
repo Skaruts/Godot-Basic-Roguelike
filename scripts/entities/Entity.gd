@@ -1,4 +1,4 @@
-extends "res://scripts/Cell.gd"
+extends "res://scripts/factories/Tile.gd"
 
 var components = {}
 
@@ -26,3 +26,9 @@ func add_component(cname, comp):
 	add_child(comp)
 	comp.set_owner(self)
 	components[cname] = comp
+
+func set_visible(show): set_hidden( not show )  # invert bool
+
+func set_fg(fg):
+	self.fg = fg
+	set_modulate(fg)

@@ -1,6 +1,6 @@
-extends "res://scripts/ui/UI_Panel.gd"
+extends "res://scripts/widgets/UI_Panel.gd"
 
-var pre_label = preload("res://scripts/ui/UI_Label.gd")
+var pre_label = preload("res://scripts/widgets/UI_Label.gd")
 
 var texts = []
 var labels = []
@@ -12,9 +12,8 @@ func _ready():
 func log_line(line):
 	texts.push_back(line)
 
-	var l = pre_label.new()
+	var l = pre_label.new( Vector2(1, labels.size()+1), 10, line )
 	labels.append(l)
-	l.init(Vector2(1, labels.size()), line, colors.GRAY3, colors.BLACK) 
 	add_child(l)
 
 	if labels.size() > max_lines:

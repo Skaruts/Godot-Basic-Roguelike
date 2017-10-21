@@ -48,8 +48,8 @@ func set_screen_size():
 func _input(event):
 	if event.is_action_pressed("k_quit"):               exit()
 
-	if event.is_action_pressed("k_switch_tex_up"):      switch_texture(-1)
-	if event.is_action_pressed("k_switch_tex_down"):    switch_texture(1)
+	if event.is_action_pressed("k_switch_tex_up"):      switch_font(-1)
+	if event.is_action_pressed("k_switch_tex_down"):    switch_font(1)
 	if event.is_action_pressed("k_rebuild_map"):        world.rebuild_map()
 
 	if event.is_action_pressed("k_debug"):              world.toggle_debug()
@@ -59,10 +59,10 @@ func _input(event):
 	if event.is_action_pressed("k_halls"):              world.toggle_debug_halls()
 	if event.is_action_pressed("k_room_info"):          world.toggle_debug_room_info()
 
-func switch_texture(dir):
-	if textures.switch_texture(dir):
+func switch_font(dir):
+	if textures.switch_font(dir):
 		# 0 default | 1 reverse | 2 real Time | 4 unique
-		get_tree().call_group(2, "CELLS", "switch_texture")
+		get_tree().call_group(2, "TILES", "switch_font")
 		ui.reposition()
 		map_view.reposition()
 		set_screen_size()

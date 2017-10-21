@@ -1,6 +1,8 @@
 # AutoLoaded script
 extends Node
 
+var mouse_grid = Vector2()
+var mouse_ui_grid = Vector2()
 var took_turn = true
 var current_dungeon = null
 var player = null

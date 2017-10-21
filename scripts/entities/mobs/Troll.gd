@@ -6,7 +6,7 @@ var pre_combat = preload("res://scripts/components/Combat.gd")
 
 func _ready():
 	add_to_group("MAP_ENTITIES")
-	name = "Troll"
+	name = "^4Troll^"
 	sight_range = 3
 	is_obstacle = true
 

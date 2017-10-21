@@ -1,0 +1,10 @@
+
+# set name			Text				ASCII				Tiles
+font1_8				font1_4x8_t			font1_8x8_a			font1_8x8_g
+font1_12			font1_6x12_t		font1_12x12_a		font1_12x12_g
+font1_16			font1_8x16_t		font1_16x16_a		font1_16x16_g
+font1_18			font1_9x18_t		font1_18x18_a		font1_18x18_g
+font1_24			font1_12x24_t		font1_24x24_a		font1_24x24_g
+font2_12			font2_6x12_t		font2_12x12_a		font2_12x12_g
+font2_24			font2_12x24_t		font2_24x24_a		font2_24x24_g
+

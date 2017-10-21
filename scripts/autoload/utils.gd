@@ -172,6 +172,48 @@ func list_files(path, ext=""):
 	dir.list_dir_end()
 	return files
 
+##############################################################
+# Loads TAB separated data from a data file.
+#-------------------------------------------------------------
+# Returns an array containing each line from the file, with
+# its elements separated into an array. Parsing of the data
+# should take place elsewhere.
+#
+# Format for the file content should be:
+# element1 ___ ___ element2 ___ ___ elementN
+# # Comment line using '#'
+#
+# Elements should be separated by 1 or more TAB. Spaces are
+# irrelevant, and if they exist they're automatically removed.
+#
+# Doesn't yet exclude comments placed after valid data.
+#-------------------------------------------------------------
+func get_data_file(filename):
+	var lines = []
+	var fin = File.new()
+
+	if fin.file_exists(filename):
+		fin.open(filename, fin.READ)
+
+		while not fin.eof_reached():
+			var line = fin.get_line()
+			if line.length() and not line[0] in ['#', '\n']:
+				var l = line.replace(' ', '').split('\t', false)
+				var is_valid = true
+				for p in l:
+					if not p.is_valid_identifier() and p != '-':
+						is_valid = false
+						break
+
+				if is_valid:
+					lines.append( l )
+
+		fin.close()
+		return lines
+
+	return null
+
+
 
 ##############################################################
 # Convert a single character to its ascii code

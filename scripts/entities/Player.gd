@@ -24,7 +24,7 @@ func _ready():
 	label = get_node("Label")
 	set_debug( settings.SHOW_MOB_HP )
 
-	name = "Player"
+	name = "^3Player^"
 	sight_range = 15
 	is_obstacle = true
 

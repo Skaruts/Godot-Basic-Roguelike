@@ -4,12 +4,12 @@ var ui_panels = {}
 var world
 
 func _ready():
-	ui_panels["panel1"] = load("res://scripts/ui/UI_Panel1.gd").new()   # left
-	ui_panels["panel2"] = load("res://scripts/ui/UI_Panel2.gd").new()   # log
-	ui_panels["panel3"] = load("res://scripts/ui/UI_Panel3.gd").new()   # right
-	ui_panels["panel1"].init(12, settings.GRID_HEIGHT-6)
-	ui_panels["panel2"].init(18, settings.GRID_HEIGHT)
-	ui_panels["panel3"].init(46, 6)
+	ui_panels["panel1"] = load("res://scripts/ui/Panel1.gd").new()   # left
+	ui_panels["panel2"] = load("res://scripts/ui/Panel2.gd").new()   # log
+	ui_panels["panel3"] = load("res://scripts/ui/Panel3.gd").new()   # right
+	ui_panels["panel1"].init(0, 0, 12, settings.GRID_HEIGHT-6)
+	ui_panels["panel2"].init(0, 0, 18, settings.GRID_HEIGHT)
+	ui_panels["panel3"].init(0, 0, 46, 6)
 	add_child( ui_panels["panel1"] )
 	add_child( ui_panels["panel2"] )
 	add_child( ui_panels["panel3"] )

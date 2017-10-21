@@ -1,27 +1,20 @@
 extends Node
 
-var pre_tile = preload("res://scenes/Tile.tscn")
-var pre_cell = preload("res://scenes/Cell.tscn")
+var pre_tile = preload("res://scripts/factories/Tile.gd")
 
-func make_tiles(charmap, w, h, parent, fg, bg, is_cell=false):
+func make_tiles(charmap, w, h, parent, fg, bg):
 	var tilemap = Array()
 	for j in range(h):
 		for i in range(w):
 			if charmap[i+j*w] > 0:
-				tilemap.append( _create_tile( i, j, charmap[i+j*w], parent, fg, bg, is_cell ) )
+				tilemap.append( _create_tile( i, j, charmap[i+j*w], parent, fg, bg ) )
 	return tilemap
 
-func _create_tile(x, y, char, parent, fg, bg, is_cell ):
-	var tile
-	if is_cell: tile = pre_cell.instance()
-	else:       tile = pre_tile.instance()
+func _create_tile(x, y, char, parent, fg, bg ):
+	var tile = pre_tile.new()
 	parent.add_child( tile )
 	tile.set_owner( parent )
-
-	tile.init( Vector2(x, y), char )
-	tile.set_fg( fg )
-	tile.set_bg( bg )
-
+	tile.init( Vector2(x, y), char, fg, bg )
 	return tile
 
 

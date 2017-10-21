@@ -68,3 +68,22 @@ var DOOR        = Color('d96c00')   # Orange
 
 var UI_FG   = Color('808080') #Color('a45b10')
 var UI_BG   = BLACK
+var UI_TEXT_FG = GRAY3
+var BUTTON_UP = GREEN1
+var BUTTON_DOWN = GREEN2
+
+
+#######################################################
+# Colors for text color codes. Syntax described in
+# TextFactory.gd (over the parse_string() function)
+# -----------------------------------------------------
+var TEXT_COLOR_0 = RED3
+var TEXT_COLOR_1 = GREEN3
+var TEXT_COLOR_2 = BLUE3
+var TEXT_COLOR_3 = YELLOW3
+var TEXT_COLOR_4 = ORANGE3
+var TEXT_COLOR_5 = PINK3
+var TEXT_COLOR_6 = PURPLE3
+var TEXT_COLOR_7 = GRAY1
+var TEXT_COLOR_8 = GRAY2
+var TEXT_COLOR_9 = GRAY3

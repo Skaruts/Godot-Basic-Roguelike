@@ -19,10 +19,10 @@ func _ready():
 func attack(target):
 	var damage = strength - target.combat.defense
 	if damage > 0:
-		global.callf("log_line", parent.name + ' attacks ' + target.name + ' for ' + str(damage) + ' HP')
+		global.callf("log_line", "%s attacks %s for ^0%d^ HP" % [parent.name, target.name, damage] )
 		target.combat.take_damage(damage)
 	else:
-		global.callf("log_line", parent.name + ' attacks ' + target.name + ' but does no damage')
+		global.callf("log_line", "%s attacks %s but does no damage." % [parent.name, target.name] )
 
 func take_damage(damage):
 
