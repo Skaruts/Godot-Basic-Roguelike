@@ -12,13 +12,19 @@ var darkened = false
 var is_solid = false
 
 func _init():
+	# this takes advantage of Godot's sprite animation settings, so Godot
+	# automatically sets the texture coords for the specified frame (glyph).
+	# hframes and vframes are set to the width and height of the tileset,
+	# in tiles, which is 16x16.
 	set_hframes(16)
 	set_vframes(16)
-	set_centered(false)
+	set_centered(false)	  # use top left corner as pivot
+
+	# create the background polygon
 	background = Polygon2D.new()
 	add_child(background)
 	background.set_owner(self)
-	background.set_name("Background")
+	background.set_name("Background") # probably redundant
 	background.set_color( colors.BLACK )
 	background.set_draw_behind_parent(true)
 
@@ -63,18 +69,15 @@ func set_bg(bg):
 	background.set_color(bg)
 
 func get_glyph():	return get_frame()
-func get_fg():	return get_modulate()
-func get_bg():	return background.get_color()
+func get_fg():	    return get_modulate()
+func get_bg():	    return background.get_color()
 
-func set_visible(show):
-	if show:
-		if discovered:  set_dark(false)
-		else:
-			set_hidden(false)
-			discovered = true
+func set_visible(vis):
+	if discovered:
+		set_dark(!vis)
 	else:
-		if discovered:  set_dark(true)
-		else:           set_hidden(true)
+		set_hidden(!vis)
+		discovered = vis
 
 func set_dark(dark):
 	if dark and not darkened:
