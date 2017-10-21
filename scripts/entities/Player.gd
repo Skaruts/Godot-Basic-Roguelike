@@ -17,6 +17,7 @@ var alive = true
 var sight_range
 
 func _ready():
+	set_z(10)
 	print ("Player - child count: ",  get_child_count())
 	global.nodes["player"] = self
 	global.player = self

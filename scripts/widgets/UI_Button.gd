@@ -1,5 +1,8 @@
 extends "res://scripts/widgets/UI_Widget.gd" # or maybe inherit from a Clickable.gd
 
+# This class was just imported from another project,
+# so it may need to be slightly adapted to this one
+
 var text
 var label
 var callbacks = []
@@ -8,8 +11,6 @@ var mouse_over = false
 var is_clicked = false
 
 func _init( pos, width, text, fref, arg=null ):
-
-
 	set_position(pos)
 	set_text(text, width)
 	add_callback(fref, arg)
@@ -18,6 +19,7 @@ func _ready():
 	set_process(false)
 	set_process_input(false)
 
+# need to rename this function to something else...
 func init(pos, width, text, fref, arg=null):
 	set_position(pos)
 	set_text(text, width)
@@ -36,7 +38,6 @@ func add_callback(fref, arg=null):
 	args.append(arg)
 
 func _process(delta):
-	# print("BUTTON PROCESSING")
 	mouse_over = check_mouse()
 	if mouse_over:
 		if is_clicked:
@@ -71,8 +72,6 @@ func set_bg(bg):
 	self.bg = bg
 	label.set_bg(bg)
 
-
-
 func start_processing():
 	set_process(true)
 	set_process_input(true)
@@ -81,6 +80,3 @@ func stop_processing():
 	set_process(false)
 	set_process_input(false)
 
-#func check_mouse():
-#	var m_pos = global.mouse_ui_grid
-#	return m_pos.x >= pos.x and m_pos.x < pos.x+w and m_pos.y >= pos.y and m_pos.y < pos.y+h

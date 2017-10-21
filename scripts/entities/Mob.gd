@@ -14,6 +14,7 @@ var alive = true
 var sight_range
 
 func _ready():
+	set_z(5)
 	add_to_group("MOBS")
 	label = get_node("Label")
 	set_debug( settings.SHOW_MOB_HP )

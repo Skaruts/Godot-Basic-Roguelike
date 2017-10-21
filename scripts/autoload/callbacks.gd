@@ -1,3 +1,0 @@
-# AutoLoaded script
-extends Node
-

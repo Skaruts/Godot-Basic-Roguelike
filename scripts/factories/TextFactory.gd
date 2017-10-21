@@ -17,6 +17,12 @@ func printl( string, parent ):
 	var cellmap = parse_string(string)
 	return __make_tiles(cellmap, 0, parent)
 
+func create_bar(w, parent, glyph, fg, bg):
+	var cellmap = Array()
+	for i in range(w):
+		cellmap.append( [ glyph, fg, bg ] )
+
+	return __make_tiles(cellmap, 0, parent)
 
 #######################################################
 # Checks strings for color codes

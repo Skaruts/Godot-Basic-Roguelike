@@ -15,6 +15,7 @@ var TROLL   = 't'
 
 var CORPSE  = '&'
 
+var HP_BAR = 219
 # drawing lines
 # -------------------------
 # thin lines

@@ -13,6 +13,7 @@ var decay_turns = turns/10
 var alpha_decay_turns = turns - decay_turns
 
 func _ready():
+	set_z(1)
 	add_to_group("CORPSES")
 	add_to_group("MAP_ENTITIES")
 	is_obstacle = false

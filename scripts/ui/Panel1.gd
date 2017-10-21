@@ -3,7 +3,7 @@ extends "res://scripts/widgets/UI_Panel.gd"
 var pre_label = preload("res://scripts/widgets/UI_Label.gd")
 var pre_counter = preload("res://scripts/widgets/UI_Counter.gd")
 
-var BAR_WIDTH = 10
+var BAR_WIDTH = 20
 
 var hp_label
 var mana_label
@@ -31,8 +31,8 @@ func _ready():
 	add_widget( hp_label )
 	add_widget( mana_label )
 
-	health_bar = load("res://scripts/ui/HealthBar.gd").new( Vector2(1, 10), BAR_WIDTH )
-	mana_bar   = load("res://scripts/ui/ManaBar.gd").new( Vector2(1, 12), BAR_WIDTH )
+	health_bar = load("res://scripts/widgets/UI_Bar.gd").new( Vector2(1, 10), BAR_WIDTH, charcodes.HP_BAR, colors.RED3, colors.RED1 )
+	mana_bar   = load("res://scripts/widgets/UI_Bar.gd").new( Vector2(1, 12), BAR_WIDTH, charcodes.HP_BAR, colors.BLUE3, colors.BLUE1 )
 	add_widget( health_bar )
 	add_widget( mana_bar )
 
@@ -43,6 +43,6 @@ func _process(delta):
 	if global.took_turn:
 		attack_count.set_value( global.player.combat.strength )
 		defense_count.set_value( global.player.combat.defense )
-		health_bar.set_hp( global.player.combat.hp, global.player.combat.max_hp )
-		mana_bar.set_mana( global.player.combat.mana, global.player.combat.max_mana )
+		health_bar.set_value( global.player.combat.hp, global.player.combat.max_hp )
+		mana_bar.set_value( global.player.combat.mana, global.player.combat.max_mana )
 	pass
