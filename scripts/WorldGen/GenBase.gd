@@ -28,6 +28,7 @@ func set_seed(custom_seed = null):
 
 	# then use the new seed
 	seed(SEED)
+
 	print("-------------------------------------------------")
 	print("Factory.set_seed: | seed: ", SEED)
 	print("-------------------------------------------------")

@@ -62,7 +62,7 @@ func _input(event):
 func switch_font(dir):
 	if textures.switch_font(dir):
 		# 0 default | 1 reverse | 2 real Time | 4 unique
-		get_tree().call_group(2, "TILES", "switch_font")
+		get_tree().call_group(2, "SPRITES", "switch_font")
 		ui.reposition()
 		map_view.reposition()
 		set_screen_size()

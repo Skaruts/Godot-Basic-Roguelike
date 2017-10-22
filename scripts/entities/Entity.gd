@@ -1,4 +1,7 @@
-extends "res://scripts/factories/Tile.gd"
+#######################################################
+# Entity class, for all map objects
+#######################################################
+extends "res://scripts/factories/Cell.gd"
 
 var components = {}
 
@@ -13,10 +16,7 @@ var name
 var dungeon
 
 func _ready():
-	# ._ready()
-	add_to_group("TEXTURED")
 	add_to_group("ENTITIES")
-#	switch_texture()
 
 # sets the map this entity is currently in
 func set_dungeon(d):
@@ -27,7 +27,8 @@ func add_component(cname, comp):
 	comp.set_owner(self)
 	components[cname] = comp
 
-func set_visible(show): set_hidden( not show )  # invert bool
+func set_visible(vis):
+	set_hidden(!vis)
 
 func set_fg(fg):
 	self.fg = fg
