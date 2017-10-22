@@ -1,6 +1,6 @@
 extends "res://scripts/widgets/UI_Widget.gd"
 
-var pre_cell = preload("res://scripts/factories/Cell.gd")
+var pre_char = preload("res://scripts/factories/Char.gd")   # USE TextTool FOR THIS
 
 var digits = Array()
 var val = 0
@@ -28,9 +28,11 @@ func _init( pos, width, initial_val=0, wrap=false, occlude=true, align="right" )
 	# debug
 	set_process(false)
 
+
+# USE TextTool FOR THIS
 func __make_digits():
 	for i in range( w ):
-		var digit = pre_cell.new()
+		var digit = pre_char.new()
 
 		add_child( digit )
 		digit.set_owner( self )
