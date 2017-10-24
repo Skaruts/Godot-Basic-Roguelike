@@ -4,8 +4,7 @@ If you feel this might be a starting point for you, feel free to use it. But bew
 
 I decided to do most of it through code, because it seemed to make more sense to me that way.
 
-All bitmap fonts are rough WIPs and were created by me with [Aseprite](https://www.aseprite.org/) (with a bit of very useful help from [Grid Sage Games](http://www.gridsagegames.com/blog/2014/09/font-creation/)).
-
+All graphical assets are rough WIPs created by me with [Aseprite](https://www.aseprite.org/) (with a bit of very useful help from [Grid Sage Games](http://www.gridsagegames.com/blog/2014/09/font-creation/) for the bitmap fonts), and [Krita](https://krita.org/en/).
 
 
 #### **_Currently, the controls are:_**
