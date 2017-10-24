@@ -5,7 +5,7 @@ If you feel like you'd like to use it as a starting point, feel free to do so. B
 All graphical assets are rough WIPs created by me with [Aseprite](https://www.aseprite.org/) (with a bit of very useful help from [Grid Sage Games](http://www.gridsagegames.com/blog/2014/09/font-creation/) for the bitmap fonts), and [Krita](https://krita.org/en/).
 
 
-#### **_Currently, the controls are:_**
+#### **_Controls:_**
 |key 				| action|
 |---|---|
 |**Q**				| Quit
