@@ -3,13 +3,14 @@ extends Node
 
 # debug stuff
 # ------------------------------------------------------------
-var DEBUG_SEED = 0  # overrides factory random seed generation
-
 var DEBUG_LEAF = false
 var DEBUG_HALL = false
 var DEBUG_ROOM = false
 var SHOW_ROOM_LABELS = false
 var SHOW_MOB_HP = false
+
+# overrides map factory random seed generation, unless it's 'null'
+var DEBUG_SEED = 0
 
 # master flag, overrides all of the above, although they
 # can still be set to true in each class, overriding this
