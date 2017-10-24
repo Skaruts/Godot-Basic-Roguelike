@@ -10,7 +10,7 @@ All graphical assets are rough WIPs created by me with [Aseprite](https://www.as
 |---|---|
 |**Q**				| Quit
 |**F**				| Shake Camera (for no reason, just a useless test)
-|**SPACE**			| Generate new map (currently using a fixed seed, in autoload/settings.gd)
+|**SPACE**			| Generate new map (currently using a fixed seed, set in autoload/settings.gd)
 |**WASD / Arrows**	| Move character
 |**PgUp / PgDown**	| Switch font
 |**1**				| (debug) Toggle all debugging visuals 
