@@ -30,7 +30,7 @@ func create_bar(w, parent, glyph, fg, bg):
 #                               PRIVATE CLASS MEMBERS
 #####################################################################################
 # -----------------------------------------------------
-# Creates a new array of empty chars (0) using
+# OBSOLETE. Creates a new array of empty chars (0) using
 # default colors
 # -----------------------------------------------------
 func __create_charmap(w, h):
