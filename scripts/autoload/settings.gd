@@ -10,7 +10,7 @@ var SHOW_ROOM_LABELS = false
 var SHOW_MOB_HP = false
 
 # overrides map factory random seed generation, unless it's 'null'
-var DEBUG_SEED = 0
+var DEBUG_SEED = null
 
 # master flag, overrides all of the above, although they
 # can still be set to true in each class, overriding this
