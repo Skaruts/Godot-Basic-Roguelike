@@ -11,18 +11,18 @@ var bg = colors.UI_BG
 var mw = 0
 var mh = 0
 
-var HL
-var VL
-var TL
-var TR
-var BL
-var BR
-var LJ
-var RJ
-var TJ
-var BJ
-var XJ
-var CAP
+var HL   # horizontal line
+var VL   # vertical line
+var TL   # top left corner line
+var TR   # top right
+var BL   # bottom left
+var BR   # bottom right
+var LJ   # left junction
+var RJ   # right junction
+var TJ   # top junction
+var BJ   # bottom junction
+var XJ   # cross junction
+var CAP  # glyph to use instead of corner-lines, iirc
 
 func set_colors(fg = colors.UI_FG, bg = colors.UI_BG):
 	self.fg = fg
